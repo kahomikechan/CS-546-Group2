@@ -1,0 +1,26 @@
+{
+  "name": "cs-546-group2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kahomikechan/CS-546-Group2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "express": "^4.19.2",
+    "mongodb": "^6.5.0"
+  },
+  "bugs": {
+    "url": "https://github.com/kahomikechan/CS-546-Group2/issues"
+  },
+  "homepage": "https://github.com/kahomikechan/CS-546-Group2#readme"
+}
