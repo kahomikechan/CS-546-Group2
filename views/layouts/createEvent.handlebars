@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+</head>
+<body>
+    <div id="eventForm"></div>
+
+    <!-- Include Handlebars library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+
+    <!-- Include our event template -->
+    <script id="event-template" type="text/x-handlebars-template">
+        <h2>Create Event</h2>
+        <form id="createEventForm">
+            <label for="eventName">Event Name:</label>
+            <input type="text" id="eventName" name="eventName" required><br>
+
+            <label for="eventAddress">Event Address:</label>
+            <input type="text" id="eventAddress" name="eventAddress" required><br>
+
+            <label for="time">Time:</label>
+            <input type="datetime-local" id="time" name="time" required><br>
+
+            <label for="eventContact">Contact:</label>
+            <input type="text" id="eventContact" name="eventContact"><br>
+
+            <label for="eventType">Event Type:</label>
+            <input type="text" id="eventType" name="eventType"><br>
+
+            <label for="eventAccommodations">Accommodations:</label>
+            <input type="text" id="eventAccommodations" name="eventAccommodations"><br>
+
+            <label for="eventPriceRange">Price Range:</label>
+            <input type="text" id="eventPriceRange" name="eventPriceRange"><br>
+
+            <label for="eventLink">Event Link:</label>
+            <input type="text" id="eventLink" name="eventLink"><br>
+
+            <label for="eventDescription">Event Description:</label><br>
+            <textarea id="eventDescription" name="eventDescription" rows="4" cols="50"></textarea><br>
+
+            <button type="submit">Create Event</button>
+        </form>
+    </script>
+
+    <!-- Include our JavaScript file -->
+    <script src="app.js"></script>
+</body>
+</html>
