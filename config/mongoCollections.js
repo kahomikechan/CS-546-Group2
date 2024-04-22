@@ -17,6 +17,4 @@ const getCollectionFn = (collection) => {
 export const activities = getCollectionFn('activities');
 export const events = getCollectionFn('events');
 export const users = getCollectionFn('users');
-
-//Are we making reviews a collection???
 export const reviews = getCollectionFn('reviews');
