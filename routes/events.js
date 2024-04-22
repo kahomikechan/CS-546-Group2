@@ -6,7 +6,7 @@ const router = express.Router();
 // route to create a new event
 router.post('/', async (req, res) => {
   try {
-    const eventData = req.body; // Assuming request body contains event data
+    const eventData = req.body; 
     const newEvent = await createEvent(eventData);
     res.status(201).json(newEvent);
   } catch (error) {
@@ -43,7 +43,7 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const eventId = req.params.id;
-    const updatedEventData = req.body; // Assuming request body contains updated event data
+    const updatedEventData = req.body; 
     const updatedEvent = await updateEvent(eventId, updatedEventData);
     res.json(updatedEvent);
   } catch (error) {
