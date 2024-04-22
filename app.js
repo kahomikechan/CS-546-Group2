@@ -1,0 +1,36 @@
+import express from 'express';
+import { MongoClient } from 'mongodb';
+import bodyParser from 'body-parser';
+
+const app = express();
+const port = 3000; // Or any other port you prefer
+
+const uri = 'mongodb://localhost:27017';
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+client.connect().then(() => {
+    console.log('Connected to MongoDB');
+}).catch(err => {
+    console.error('Error connecting to MongoDB:', err);
+});
+
+app.use(bodyParser.json());
+
+app.post('/create-event', async (req, res) => {
+    const eventData = req.body;
+
+    try {
+        const db = client.db('eventDB');
+
+        const result = await db.collection('events').insertOne(eventData);
+
+        res.status(200).json({ message: 'Event saved successfully', insertedId: result.insertedId });
+    } catch (error) {
+        console.error('Error saving event:', error);
+        res.status(500).json({ error: 'Failed to save event' });
+    }
+});
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
