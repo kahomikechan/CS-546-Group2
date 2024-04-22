@@ -1,0 +1,27 @@
+{{! This will be your default layout for all handlebars file rendered. This will be inherited by all other templates. }}
+{{! Refer lecture code to learn more on how this works
+don't forget to include your css and your client-side script file references in the layout.
+}}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>My Site</title>
+  <link rel="stylesheet" href="/public/css/styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1></h1>
+    </header>
+    <p></p>
+    <main style="display: flex; justify-content:center; align-items:center; flex-direction:column;">
+    {{{body}}}
+    </main>
+  <script src="/public/js/client_side_validation.js"></script>
+
+
+</body>
+</html>

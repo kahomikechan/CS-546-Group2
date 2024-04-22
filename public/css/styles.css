@@ -1,0 +1,68 @@
+/* You will create a CSS stylesheet in /public/css/lab10.css; this file should have at least 5 rulesets.  You will need to utilize all 5 rulesets on each of the pages (not every page has to use all 5 rulesets each but all 5 rulesets must be utilized by the various pages in your application).  So you can have some rulesets for one page, some for another page but there needs to be at least 5 total rulesets that are used between all the pages.  */
+
+
+/* Rule 1: Style for header */
+/* .header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+} */
+
+
+.input-field {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#roleInput{
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 30%;
+    box-sizing: border-box;
+}
+
+.para{
+    color: red;
+    font-size: 1.5rem;
+}
+
+.h1{
+    font-size: 3.2rem;
+}
+
+.link-size{
+    font-size: large;
+}
+
+
+.button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.error-message {
+    color: red;
+    font-size: 14px;
+}
+
+
+.link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}

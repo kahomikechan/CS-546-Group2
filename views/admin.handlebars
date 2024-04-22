@@ -1,0 +1,50 @@
+{{!--
+
+If the user is logged in and they are an admin user, and 'GET /admin' endpoint is called, you will render this view
+based on the specs.
+
+
+
+--}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Admin</title>
+ <link rel="stylesheet" href="/public/css/styles.css">
+</head>
+
+<body>
+
+    <h1>Admin Panel</h1>
+    <ul>
+        {{#each users}}
+        <li>
+            <span>{{this.firstName}} {{this.lastName}}</span>
+            <button
+                class="button character-btn"
+                data-id="{{this._id}}">Approve</button>
+                
+        </li>
+        {{/each}}
+    </ul>
+
+{{!-- <script src="/public/js/admin_validation.js"> </script> --}}
+    <p><a href="/logout" class="link">Logout</a></p>
+
+   <script type="module" src="../public/js/admin_validation.js"></script>
+
+   <script>
+
+     document.querySelectorAll(".character-btn").forEach((btn) => {
+      btn.addEventListener("click", () => { 
+        console.log(btn.dataset.id); 
+            });
+        });
+
+   </script>
+    
+</body>
+</html>

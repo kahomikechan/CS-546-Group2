@@ -1,0 +1,21 @@
+{
+  "name": "cs-546-project",
+  "version": "1.0.0",
+  "description": "My project module",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Nese Morali",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "express-handlebars": "^7.1.2",
+    "express-session": "^1.18.0",
+    "fs": "^0.0.1-security",
+    "mongodb": "^6.5.0",
+    "path": "^0.12.7"
+  }
+}
