@@ -4,10 +4,10 @@ import { createActivity, getAllActivities, getActivity, removeActivity, updateAc
 const router = express.Router();
 
 //create activity
-router.post('/', async (req, res) => {
+router.post('/createActivity', async (req, res) => {
   try {
-    const activity = req.body; 
-    const newActivity = await createActivity(activity);
+    const {activityName, activityAddress, activityHours, activityType, rating, activityAccommodations, activityPriceRange, reviews, activityLink, activityDescription} = req.body;
+    const newActivity = await createActivity(activityName, activityAddress, activityHours, activityType, rating, activityAccommodations, activityPriceRange, reviews, activityLink, activityDescription);
     res.status(201).json(newActivity);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
 });
 
 // get all activities
-router.get('/', async (req, res) => {
+router.get('/allActivities', async (req, res) => {
   try {
     const allActivities = await getAllActivities();
     res.json(allActivities);
@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 });
 
 // get a specific activity by ID
-router.get('/:id', async (req, res) => {
+router.get('/activity/:id', async (req, res) => {
   try {
     const activityId = req.params.id;
     const activity = await getActivity(activityId);
@@ -40,7 +40,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // update an existing activity
-router.put('/:id', async (req, res) => {
+router.put('/updateActivity/:id', async (req, res) => {
   try {
     const activityId = req.params.id;
     const updatedActivity = req.body; // Assuming request body contains updated activity data
@@ -52,7 +52,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // delete an activity
-router.delete('/:id', async (req, res) => {
+router.delete('/deleteActivity/:id', async (req, res) => {
   try {
     const activityId = req.params.id;
     await removeActivity(activityId);

@@ -147,4 +147,4 @@ const updateReview = async (
 
 };
 
-export { createReview, getAllReviews, removeReview, updateReview }
+export { createReview, getAllReviews, removeReview, updateReview, getReview }

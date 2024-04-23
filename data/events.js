@@ -98,3 +98,5 @@ export const updateEvent = async (
 
     return updatedEventDoc;
 };
+
+export { createEvent, getAllEvents, getEvent, removeEvent, updateEvent }

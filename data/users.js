@@ -257,4 +257,6 @@ export const loginUser = async (emailAddress, password) => {
   
   };
 
+  export { createUser, getAllUsers, getUser, removeUser, updateProfile, approveProfile, loginUser, getUnapprovedUsers }
+
 

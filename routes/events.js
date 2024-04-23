@@ -5,7 +5,7 @@ const router = express.Router();
 
 // /event
 // route to create a new event
-router.post('/', async (req, res) => {
+router.post('/createEvent', async (req, res) => {
   try {
     const eventData = req.body; 
     const newEvent = await createEvent(eventData);
@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
 });
 
 // route to get all events
-router.get('/', async (req, res) => {
+router.get('/allEvents', async (req, res) => {
   try {
     const allEvents = await getAllEvents();
     res.json(allEvents);
@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 });
 
 // route to get a specific event by ID
-router.get('/:id', async (req, res) => {
+router.get('/event/:id', async (req, res) => {
   try {
     const eventId = req.params.id;
     const event = await getEvent(eventId);
@@ -41,7 +41,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // route to update an existing event
-router.put('/:id', async (req, res) => {
+router.put('/updateEvent/:id', async (req, res) => {
   try {
     const eventId = req.params.id;
     const updatedEventData = req.body; 
@@ -53,7 +53,7 @@ router.put('/:id', async (req, res) => {
 });
 
 //route to delete an event
-router.delete('/:id', async (req, res) => {
+router.delete('/deleteEvent/:id', async (req, res) => {
   try {
     const eventId = req.params.id;
     await removeEvent(eventId);
