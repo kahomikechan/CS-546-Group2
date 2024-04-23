@@ -6,7 +6,7 @@ const app = express();
 const port = 3000; // Or any other port you prefer
 
 const uri = 'mongodb://localhost:27017';
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(uri);
 
 client.connect().then(() => {
     console.log('Connected to MongoDB');

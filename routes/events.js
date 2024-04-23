@@ -3,6 +3,7 @@ import { createEvent, getAllEvents, getEvent, removeEvent, updateEvent } from '.
 
 const router = express.Router();
 
+// /event
 // route to create a new event
 router.post('/', async (req, res) => {
   try {
