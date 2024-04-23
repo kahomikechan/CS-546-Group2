@@ -1,7 +1,5 @@
 import { ObjectId } from mongodb;
 import { activities, reviews } from "../config/mongoCollections.js";
-import { dbConnection } from "../config/mongoConnection.js";
-import Activity from "../models/activities.js";
 
 const createActivity = async (
     activityName,

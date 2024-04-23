@@ -1,8 +1,8 @@
 //Description/Photos (Time, Location, external link, etc)
 
 //import
-
-import { Event } from "../models/events";
+import { events, reviews } from "../config/mongoCollections.js";
+import { ObjectId } from mongodb;
 
 export const createEvent = async (
     eventName,
@@ -15,46 +15,49 @@ export const createEvent = async (
     eventPriceRange,
     participants
 ) => {
-    try {
-        const event = await Event.create({
-            eventName,
-            eventAddress,
-            eventDescription,
-            time,
-            eventContact,
-            eventType,
-            eventAccommodations,
-            eventPriceRange,
-            participants
-        })
-        return event;
-    } catch (error) {
-        throw new Error('Error creating event.')
-    }
+    const eventCollection = await events();
+
+    const newEvent = {
+        eventName,
+        eventAddress,
+        eventDescription,
+        time,
+        eventContact,
+        eventType,
+        eventAccommodations,
+        eventPriceRange,
+        participants
+    };
+
+    const insertInfo = await eventCollection.insertOne(newEvent);
+    
+    if (insertInfo.insertedCount === 0) throw new Error("Could not add event.");
+
+    if (!eventName || !eventAddress || !eventDescription || !time || !eventContact || !eventType || !eventAccommodations || !eventPriceRange
+        || !participants) throw new Error("All fields must have input.")
+
+    return newEvent;
 };
 
 export const getAllEvents = async () => {
-    try {
-        return await Event.find();
-    } catch (error) {
-        throw new Error('Error finding all events.')
-    }
+    const eventCollection = await events();
+    const eventList = await eventCollection.find({}).toArray();
+    return eventList;
 };
 
 export const getEvent = async (eventId) => {
-    try {
-        return await Event.findById(eventId);
-    } catch (error) {
-        throw new Error('Error finding event.');
-    }
+    const eventCollection = await events();
+    const event = await eventCollection.findOne({_id : ObjectId(eventId)});
+    if (!event) throw new Error("Event not found.");
+    return event;
 };
 
 export const removeEvent = async (eventId) => {
-    try {
-        return await Event.findByIdAndDelete(eventId);
-    } catch (error) {
-        throw new Error('Error removing event.');
-    }
+    const eventCollection = await events();
+    const deletedEvent = await eventCollection.findOneAndDelete({_id : ObjectId(eventId)});
+    if (deletionInfo.deletedCount === 0) throw new Error("Could not find event to remove.");
+
+    return `${deletedEvent.eventName} has been deleted.`;
 };
 
 export const updateEvent = async (
@@ -69,8 +72,10 @@ export const updateEvent = async (
     eventPriceRange,
     participants
 ) => {
-    try {
-        return await Event.findByIdAndUpdate(eventId, {
+    const eventCollection = await events();
+
+    const updatedEvent = {
+        $set: {
             eventId,
             eventName,
             eventDescription,
@@ -81,8 +86,15 @@ export const updateEvent = async (
             eventAccommodations,
             eventPriceRange,
             participants
-        }, {new : true})
-    } catch (error) {
-        throw new Error('Error updating event.');
-    }
+        }
+    };
+
+    const updateInfo = await eventCollection.updateOne({ _id: ObjectId(eventId) }, { $set: updatedEvent });
+
+    if (updateInfo.modifiedCount === 0) throw new Error('Could not update event');
+
+    const updatedEventDoc = await eventCollection.findOne({ _id: ObjectId(eventId) });
+    if (!updatedEventDoc) throw new Error('Updated event not found');
+
+    return updatedEventDoc;
 };
