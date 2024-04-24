@@ -21,6 +21,7 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
+//connect to mongodb
 client.connect().then(() => {
     console.log('Connected to MongoDB');
 }).catch(err => {
@@ -62,10 +63,10 @@ app.get('/random-activity', async (req, res) => {
 app.use(session({
     resave: true,
     saveUninitialized: true,
-    secret: 'hai :3'
+    secret: 'meow'
 }));
-constructorMethod(app);
 
+constructorMethod(app);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
