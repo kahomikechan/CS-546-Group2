@@ -31,6 +31,21 @@ app.post('/create-event', async (req, res) => {
     }
 });
 
+app.get('/random-activity', async (req, res) => {
+    try {
+        const db = client.db('database_name'); 
+        const collection = db.collection('activities');
+        const count = await collection.countDocuments();
+        const randomIndex = Math.floor(Math.random() * count);
+        const randomActivity = await collection.findOne({}, { skip: randomIndex });
+
+        res.json(randomActivity);
+    } catch (error) {
+        console.error('Error fetching random activity:', error);
+        res.status(500).json({ error: 'Failed to fetch random activity' });
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
