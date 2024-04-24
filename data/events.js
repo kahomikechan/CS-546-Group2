@@ -1,7 +1,7 @@
 //Description/Photos (Time, Location, external link, etc)
 
 //import
-import { events, reviews } from "../config/mongoCollections.js";
+import { events } from "../config/mongoCollections.js";
 import { ObjectId } from mongodb;
 
 export const createEvent = async (

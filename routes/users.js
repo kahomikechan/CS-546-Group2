@@ -1,9 +1,9 @@
-import {Router} from 'express';
+import express from 'express';
 
 //import {logMiddleware,redirectMiddleware,registerRedirectMiddleware,loginRedirectMiddleware,logoutMiddleware,protectedMiddleware,adminMiddleware} from '../middleware.js';
 import { loginUser, createUser, getUnapprovedUsers, updateProfile } from '../data/users.js';
 
-const router = Router();
+const router = express.Router();
 
 router.route('/').get(async (req, res) => {
   if (!req.session.user) {

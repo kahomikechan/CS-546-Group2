@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events List Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Events List Page</h1>
+
+    <form id="searchForm">
+        <label for="searchInput">Search for upcoming events:</label>
+        <input type="text" id="searchInput" name="searchInput">
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Sort/Filter Options:</h2>
+    <form id="sortFilterForm">
+        <label for="sortByDate">Sort by Date:</label>
+        <select id="sortByDate" name="sortByDate">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+
+        {{!-- <label for="sortByCreator">Sort by Event Creator:</label>
+        <select id="sortByCreator" name="sortByCreator">
+            <!-- options for event creators go here -->
+        </select> --}}
+
+        <label for="filterByCategory">Filter by Event Category:</label>
+        <select id="filterByCategory" name="filterByCategory">
+            <!-- options for event categories go here -->
+        </select>
+
+        <button type="submit">Apply</button>
+    </form>
+
+    <div id="eventsList">
+    </div>
+
+    <script src="/routes/events.js"></script>
+</body>
+</html>
