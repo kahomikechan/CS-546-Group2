@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // If all validations pass, submit the form VIA AJAX
      //   loginForm.submit();
+// -------------------> WHEN LOGIN FORM IS SUBMITTED <-------------------
      $.ajax({
         type: 'POST',
         url: loginForm.action,
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         success: function(response) {
             alert('Login successful!');
             // add redirect the user to another page here
+            window.location.href = '/home';
         },
         error: function(xhr, status, error) {
             const errorMessage = xhr.responseText;
@@ -110,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // If all validations pass, submit the form
+  // -------------------> WHEN REGISTRATION FORM IS SUBMITTED <-------------------
         $.ajax({
             type: 'POST',
             url: registrationForm.action,
@@ -118,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
             success: function(response) {
                 alert('Registration successful!');
                 // redirect the user to another page here
+                window.location.href = '/login';
             },
             error: function(xhr, status, error) {
                 const errorMessage = xhr.responseText;

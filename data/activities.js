@@ -1,4 +1,4 @@
-import { ObjectId } from mongodb;
+import { ObjectId } from 'mongodb';
 import { activities } from "../config/mongoCollections.js";
 
 const createActivity = async (

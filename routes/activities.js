@@ -1,10 +1,10 @@
 import express from 'express';
 import { createActivity, getAllActivities, getActivity, removeActivity, updateActivity } from '../data/activities.js';
 
-const router = express.Router();
+const activitiesRouter = express.Router();
 
 //create activity
-router.post('/createActivity', async (req, res) => {
+activitiesRouter.post('/createActivity', async (req, res) => {
   try {
     const {activityName, activityAddress, activityHours, activityType, rating, activityAccommodations, activityPriceRange, reviews, activityLink, activityDescription} = req.body;
     const newActivity = await createActivity(activityName, activityAddress, activityHours, activityType, rating, activityAccommodations, activityPriceRange, reviews, activityLink, activityDescription);
@@ -15,7 +15,7 @@ router.post('/createActivity', async (req, res) => {
 });
 
 // get all activities
-router.get('/allActivities', async (req, res) => {
+activitiesRouter.get('/allActivities', async (req, res) => {
   try {
     const allActivities = await getAllActivities();
     res.json(allActivities);
@@ -25,7 +25,7 @@ router.get('/allActivities', async (req, res) => {
 });
 
 // get a specific activity by ID
-router.get('/activity/:id', async (req, res) => {
+activitiesRouter.get('/activity/:id', async (req, res) => {
   try {
     const activityId = req.params.id;
     const activity = await getActivity(activityId);
@@ -40,7 +40,7 @@ router.get('/activity/:id', async (req, res) => {
 });
 
 // update an existing activity
-router.put('/updateActivity/:id', async (req, res) => {
+activitiesRouter.put('/updateActivity/:id', async (req, res) => {
   try {
     const activityId = req.params.id;
     const updatedActivity = req.body; // Assuming request body contains updated activity data
@@ -52,7 +52,7 @@ router.put('/updateActivity/:id', async (req, res) => {
 });
 
 // delete an activity
-router.delete('/deleteActivity/:id', async (req, res) => {
+activitiesRouter.delete('/deleteActivity/:id', async (req, res) => {
   try {
     const activityId = req.params.id;
     await removeActivity(activityId);

@@ -2,7 +2,7 @@
 
 //import
 import { events } from "../config/mongoCollections.js";
-import { ObjectId } from mongodb;
+import { ObjectId } from 'mongodb';
 
 const createEvent = async (
     eventName,

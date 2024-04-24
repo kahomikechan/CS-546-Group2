@@ -1,11 +1,11 @@
 import express from 'express';
 import { createEvent, getAllEvents, getEvent, removeEvent, updateEvent } from '../data/events.js';
 
-const router = express.Router();
+const eventsRouter = express.Router();
 
 // /event
 // route to create a new event
-router.post('/createEvent', async (req, res) => {
+eventsRouter.post('/createEvent', async (req, res) => {
   try {
     const eventData = req.body; 
     const newEvent = await createEvent(eventData);
@@ -16,7 +16,7 @@ router.post('/createEvent', async (req, res) => {
 });
 
 // route to get all events
-router.get('/allEvents', async (req, res) => {
+eventsRouter.get('/allEvents', async (req, res) => {
   try {
     const allEvents = await getAllEvents();
     res.json(allEvents);
@@ -26,7 +26,7 @@ router.get('/allEvents', async (req, res) => {
 });
 
 // route to get a specific event by ID
-router.get('/event/:id', async (req, res) => {
+eventsRouter.get('/event/:id', async (req, res) => {
   try {
     const eventId = req.params.id;
     const event = await getEvent(eventId);
@@ -41,7 +41,7 @@ router.get('/event/:id', async (req, res) => {
 });
 
 // route to update an existing event
-router.put('/updateEvent/:id', async (req, res) => {
+eventsRouter.put('/updateEvent/:id', async (req, res) => {
   try {
     const eventId = req.params.id;
     const updatedEventData = req.body; 
@@ -53,7 +53,7 @@ router.put('/updateEvent/:id', async (req, res) => {
 });
 
 //route to delete an event
-router.delete('/deleteEvent/:id', async (req, res) => {
+eventsRouter.delete('/deleteEvent/:id', async (req, res) => {
   try {
     const eventId = req.params.id;
     await removeEvent(eventId);
