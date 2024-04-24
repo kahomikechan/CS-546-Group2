@@ -8,6 +8,12 @@
 <body>
     <h1>Main Page</h1>
 
+    <div id="randomActivity">
+        <h2>Random Activity</h2>
+        <div id="activityImage"></div>
+        <div id="activityName"></div>
+    </div>
+    
     <ul>
         <li><a href="user-account.html">User Account</a></li>
         <li><a href="review-list.html">Review List</a></li>
@@ -15,5 +21,15 @@
     </ul>
 
     <p><a href="create-event.html">Create Event</a></p>
+
+    <script>
+        fetch('/random-activity')
+            .then(response => response.json())
+            .then(activity => {
+                document.getElementById('activityImage').innerHTML = `<img src="${activity.imageUrl}" alt="${activity.name}" width="200">`;
+                document.getElementById('activityName').innerHTML = `<a href="/activities/${activity._id}">${activity.name}</a>`;
+            })
+            .catch(error => console.error('Error fetching random activity:', error));
+    </script>
 </body>
 </html>
