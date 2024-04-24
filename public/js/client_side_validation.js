@@ -28,9 +28,22 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // If all validations pass, submit the form
-        loginForm.submit();
+        // If all validations pass, submit the form VIA AJAX
+     //   loginForm.submit();
+     $.ajax({
+        type: 'POST',
+        url: loginForm.action,
+        data: $(loginForm).serialize(),
+        success: function(response) {
+            alert('Login successful!');
+            // add redirect the user to another page here
+        },
+        error: function(xhr, status, error) {
+            const errorMessage = xhr.responseText;
+            displayError(errorMessage);
+        }
     });
+ });
 
     // Get the registration form
     const registrationForm = document.getElementById('registration-form');
@@ -98,10 +111,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // If all validations pass, submit the form
-        registrationForm.submit();
+        $.ajax({
+            type: 'POST',
+            url: registrationForm.action,
+            data: $(registrationForm).serialize(),
+            success: function(response) {
+                alert('Registration successful!');
+                // redirect the user to another page here
+            },
+            error: function(xhr, status, error) {
+                const errorMessage = xhr.responseText;
+                displayError(errorMessage);
+            }
+        });
     });
-
-   
+        // registrationForm.submit();
 
     // Function to validate email address
     function isValidEmail(email) {
