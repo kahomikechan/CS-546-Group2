@@ -1,6 +1,7 @@
 import express from 'express';
 import { MongoClient } from 'mongodb';
 import bodyParser from 'body-parser';
+import constructorMethod from './routes/index.js';
 
 const app = express();
 const port = 3000; // Or any other port you prefer
@@ -45,6 +46,10 @@ app.get('/random-activity', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch random activity' });
     }
 });
+
+// app.use('/', router);
+
+constructorMethod(app);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 //import { encodeBase64 } from "bcryptjs";
 //fix depracated language here
 
-export const createUser = async (
+const createUser = async (
     firstName,
     lastName,
     email,
@@ -64,7 +64,7 @@ export const createUser = async (
   };
 
 
-export const getAllUsers = async () => {
+const getAllUsers = async () => {
     const userCollection = await users();
     let userList = await userCollection.find({}).toArray();
     if (!userList) throw new Error ('Could not get all users.');
@@ -76,7 +76,7 @@ export const getAllUsers = async () => {
 };
 
 
-export const getUser = async (id) => {
+ const getUser = async (id) => {
 
     if (!id) throw new Error('Please provide an ID to search for.');
     if (typeof id !== 'string') throw new Error('ID must be a string.');
@@ -99,7 +99,7 @@ export const getUser = async (id) => {
 };
 
 
-export const removeUser = async (userId) => {
+const removeUser = async (userId) => {
     if (!userId) throw new Error("Please provide an ID to remove.");
     if (typeof userId !== 'string') throw new Error ("ID must be a string.");
 
@@ -120,7 +120,7 @@ export const removeUser = async (userId) => {
     return `${deletedUser.firstName} ${deletedUser.lastName} has been deleted.`;
 };
 
-export const updateProfile = async (
+ const updateProfile = async (
     userId,
     firstName,
     lastName,
@@ -171,7 +171,7 @@ export const updateProfile = async (
 };
 
 
-export const approveProfile = async (
+const approveProfile = async (
     userId
 ) => {
 
@@ -207,7 +207,7 @@ export const approveProfile = async (
 };
 
 
-export const loginUser = async (emailAddress, password) => {
+const loginUser = async (emailAddress, password) => {
 
     if (!emailAddress || !password) {
       throw new Error('Both email address and password must be supplied.');
@@ -245,7 +245,7 @@ export const loginUser = async (emailAddress, password) => {
   };
   
 
-  export const getUnapprovedUsers = async () => {
+const getUnapprovedUsers = async () => {
 
     const allUsers = await getAllUsers();
      // Replace with your actual function to get all users

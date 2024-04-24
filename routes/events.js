@@ -63,4 +63,4 @@ router.delete('/deleteEvent/:id', async (req, res) => {
   }
 });
 
-export default router;
+export default eventsRouter;

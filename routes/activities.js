@@ -62,4 +62,4 @@ router.delete('/deleteActivity/:id', async (req, res) => {
   }
 });
 
-export default router;
+export default activitiesRouter;
