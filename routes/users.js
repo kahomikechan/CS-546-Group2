@@ -7,7 +7,7 @@ import { loginUser, createUser, getUnapprovedUsers, updateProfile } from '../dat
 const router = express.Router();
 
 router.route('/').get(async (req, res) => {
-    if (!req.session.user) {  //what is session????
+    if (!req.session.user) { 
         // Redirect non-authenticated users to the login route
         return res.redirect('/login');
     } else {

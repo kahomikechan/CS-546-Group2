@@ -4,11 +4,11 @@ import bodyParser from 'body-parser';
 import constructorMethod from './routes/index.js';
 import session from 'express-session'
 import { engine } from 'express-handlebars'
-import { dirname } from 'path'
+//import { dirname } from 'path'
 import {fileURLToPath} from 'url'
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+//const __dirname = dirname(__filename);
 
 const app = express();
 const port = 3000; // Or any other port you prefer
@@ -30,20 +30,20 @@ client.connect().then(() => {
 
 app.use(bodyParser.json());
 
-app.post('/create-event', async (req, res) => {
-    const eventData = req.body;
+// app.post('/create-event', async (req, res) => {
+//     const eventData = req.body;
 
-    try {
-        const db = client.db('eventDB');
+//     try {
+//         const db = client.db('eventDB');
 
-        const result = await db.collection('events').insertOne(eventData);
+//         const result = await db.collection('events').insertOne(eventData);
 
-        res.status(200).json({ message: 'Event saved successfully', insertedId: result.insertedId });
-    } catch (error) {
-        console.error('Error saving event:', error);
-        res.status(500).json({ error: 'Failed to save event' });
-    }
-});
+//         res.status(200).json({ message: 'Event saved successfully', insertedId: result.insertedId });
+//     } catch (error) {
+//         console.error('Error saving event:', error);
+//         res.status(500).json({ error: 'Failed to save event' });
+//     }
+// });
 
 app.get('/random-activity', async (req, res) => {
     try {
@@ -52,7 +52,6 @@ app.get('/random-activity', async (req, res) => {
         const count = await collection.countDocuments();
         const randomIndex = Math.floor(Math.random() * count);
         const randomActivity = await collection.findOne({}, { skip: randomIndex });
-
         res.json(randomActivity);
     } catch (error) {
         console.error('Error fetching random activity:', error);

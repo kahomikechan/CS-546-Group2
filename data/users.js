@@ -2,7 +2,6 @@ import { users } from "../config//mongoCollections.js";
 import {ObjectId} from 'mongodb';
 import bcrypt from 'bcryptjs';
 //import { encodeBase64 } from "bcryptjs";
-//fix depracated language here
 
 const createUser = async (
     firstName,
