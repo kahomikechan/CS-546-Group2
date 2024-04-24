@@ -2,12 +2,24 @@ import express from 'express';
 import { MongoClient } from 'mongodb';
 import bodyParser from 'body-parser';
 import constructorMethod from './routes/index.js';
+import session from 'express-session'
+import { engine } from 'express-handlebars'
+import { dirname } from 'path'
+import {fileURLToPath} from 'url'
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const port = 3000; // Or any other port you prefer
 
 const uri = 'mongodb://localhost:27017';
 const client = new MongoClient(uri);
+
+//Sets our app to use the handlebars engine
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
+app.set('views', './views');
 
 client.connect().then(() => {
     console.log('Connected to MongoDB');
@@ -47,9 +59,13 @@ app.get('/random-activity', async (req, res) => {
     }
 });
 
-// app.use('/', router);
-
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: 'hai :3'
+}));
 constructorMethod(app);
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

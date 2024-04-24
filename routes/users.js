@@ -1,4 +1,5 @@
 import express from 'express';
+import session from 'express-session'
 
 //import {logMiddleware,redirectMiddleware,registerRedirectMiddleware,loginRedirectMiddleware,logoutMiddleware,protectedMiddleware,adminMiddleware} from '../middleware.js';
 import { loginUser, createUser, getUnapprovedUsers, updateProfile } from '../data/users.js';

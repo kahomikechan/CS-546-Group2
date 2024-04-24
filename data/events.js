@@ -4,7 +4,7 @@
 import { events } from "../config/mongoCollections.js";
 import { ObjectId } from mongodb;
 
-export const createEvent = async (
+const createEvent = async (
     eventName,
     eventAddress,
     eventDescription,
@@ -39,20 +39,20 @@ export const createEvent = async (
     return newEvent;
 };
 
-export const getAllEvents = async () => {
+const getAllEvents = async () => {
     const eventCollection = await events();
     const eventList = await eventCollection.find({}).toArray();
     return eventList;
 };
 
-export const getEvent = async (eventId) => {
+const getEvent = async (eventId) => {
     const eventCollection = await events();
     const event = await eventCollection.findOne({_id : ObjectId(eventId)});
     if (!event) throw new Error("Event not found.");
     return event;
 };
 
-export const removeEvent = async (eventId) => {
+const removeEvent = async (eventId) => {
     const eventCollection = await events();
     const deletedEvent = await eventCollection.findOneAndDelete({_id : ObjectId(eventId)});
     if (deletionInfo.deletedCount === 0) throw new Error("Could not find event to remove.");
@@ -60,7 +60,7 @@ export const removeEvent = async (eventId) => {
     return `${deletedEvent.eventName} has been deleted.`;
 };
 
-export const updateEvent = async (
+const updateEvent = async (
     eventId,
     eventName,
     eventDescription,
