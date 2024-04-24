@@ -114,13 +114,13 @@ router
 
 
   router.route('/home').get(async (req, res) => {
-    //code here for GET
-   
-      //const {  role } = req.session.user;
-     // const currentTime = new Date().toLocaleString(); // Assuming you want the time in a readable format
-  
-      // Check if user is admin
-     // const isAdmin = role === 'admin';
+    const userId = req.session.user?.userId; // Get user ID from session
+
+    if (!userId) {
+      return res.status(401).render("error", {
+        errorMessage: "Unauthorized access. Please log in.",
+      });
+    }
   
       res.render('home');
   
@@ -129,6 +129,13 @@ router
 
   router.route('/approval').get(async (req, res) => {
   
+    const userId = req.session.user?.userId; // Get user ID from session
+
+      if (!userId) {
+        return res.status(401).render("error", {
+          errorMessage: "Unauthorized access. Please log in.",
+        });
+      }
       res.render('approval');
   
   });
@@ -136,6 +143,13 @@ router
 
   router.route('/admin').get(async (req, res) => {
     //code here for GET
+    const userId = req.session.user?.userId; // Get user ID from session
+
+      if (!userId) {
+        return res.status(401).render("error", {
+          errorMessage: "Unauthorized access. Please log in.",
+        });
+      }
   
     const unapprovedUsers = await getUnapprovedUsers();
     console.log(unapprovedUsers);
