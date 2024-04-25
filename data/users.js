@@ -89,7 +89,7 @@ const getAllUsers = async () => {
     if (!ObjectId.isValid(id)) throw new Error ('Invalid object ID');
 
     const usersCollection = await users();
-    const _user = await usersCollection.findOne({ _id: new ObjectId.createFromHexString(id) }); //depracated language used here
+    const _user = await usersCollection.findOne({ _id: new ObjectId(id) }); //depracated language used here
 
     if (_user === null) throw new Error ('No user with that ID');
 
@@ -109,7 +109,7 @@ const removeUser = async (userId) => {
 
     const usersCollection = await users();
     const deletionInfo = await usersCollection.findOneAndDelete({
-      _id: new ObjectId.createFromHexString(trimmedUserId)
+      _id: new ObjectId(trimmedUserId)
     });
 
     if (!deletionInfo.value) throw new Error(`Could not delete user with id of ${userId}`);
@@ -155,7 +155,7 @@ const removeUser = async (userId) => {
 
     const usersCollection = await users();
     const updatedInfo = await usersCollection.findOneAndUpdate(
-      {_id: new ObjectId.createFromHexString(userId)},
+      {_id: new ObjectId(userId)},
       {$set: updatedProfile},
       {returnDocument: 'after'}
     );
@@ -191,7 +191,7 @@ const approveProfile = async (
 
     const usersCollection = await users();
     const updatedInfo = await usersCollection.findOneAndUpdate(
-      {_id: new ObjectId.createFromHexString(userId)},
+      {_id: ObjectId(userId)},
       {$set: updatedProfile},
       {returnDocument: 'after'}
     );

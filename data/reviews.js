@@ -1,7 +1,6 @@
 
-import { reviews } from "../config/mongoCollections";
-import { ObjectId } from mongodb;
-import { activityId } from "./activities.js"
+import { reviews } from "../config/mongoCollections.js";
+import { ObjectId } from 'mongodb';
 
 const createReview = async (
     rating,
@@ -73,7 +72,7 @@ const getAllReviews = async () => {
     return reviewsList;
 };
 
-export const getReview = async (reviewId) => {
+const getReview = async (reviewId) => {
     if (!reviewId) throw new Error('You must provide an ID to search for');
     if (typeof reviewId !== 'string') throw new Error('ID must be a string');
     if (reviewId.trim().length === 0)

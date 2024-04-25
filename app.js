@@ -4,11 +4,12 @@ import bodyParser from 'body-parser';
 import constructorMethod from './routes/index.js';
 import session from 'express-session'
 import { engine } from 'express-handlebars'
-//import { dirname } from 'path'
+import { dirname } from 'path'
+import path from 'path';
 import {fileURLToPath} from 'url'
 
 const __filename = fileURLToPath(import.meta.url);
-//const __dirname = dirname(__filename);
+const __dirname = dirname(__filename);
 
 const app = express();
 const port = 3000; // Or any other port you prefer
@@ -58,6 +59,12 @@ app.get('/random-activity', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch random activity' });
     }
 });
+
+// Define the directory from which to serve static files
+const publicDirectoryPath = path.join(__dirname, 'public');
+
+// Mount the static middleware to serve files from the public directory
+app.use('/public', express.static(publicDirectoryPath));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
