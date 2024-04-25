@@ -3,8 +3,16 @@ import { createActivity, getAllActivities, getActivity, removeActivity, updateAc
 
 const activitiesRouter = express.Router();
 
+const isAdmin = (req, res, next) => {
+  if (req.session.user && req.session.user.role === 'admin') {
+    next();
+  } else {
+    res.status(403).json({ error: 'Access forbidden' });
+  }
+};
+
 //create activity - only admin
-activitiesRouter.post('/createActivity', async (req, res) => {
+activitiesRouter.post('/createActivity', isAdmin, async (req, res) => {
   try {
     const {activityName, activityAddress, activityHours, activityType, rating, activityAccommodations, activityPriceRange, reviews, activityLink, activityDescription} = req.body;
     const newActivity = await createActivity(activityName, activityAddress, activityHours, activityType, rating, activityAccommodations, activityPriceRange, reviews, activityLink, activityDescription);
@@ -40,7 +48,7 @@ activitiesRouter.get('/activity/:id', async (req, res) => {
 });
 
 // update an existing activity - only admin
-activitiesRouter.put('/updateActivity/:id', async (req, res) => {
+activitiesRouter.put('/updateActivity/:id', isAdmin, async (req, res) => {
   try {
     const activityId = req.params.id;
     const updatedActivity = req.body;
@@ -52,7 +60,7 @@ activitiesRouter.put('/updateActivity/:id', async (req, res) => {
 });
 
 // delete an activity - only admin
-activitiesRouter.delete('/deleteActivity/:id', async (req, res) => {
+activitiesRouter.delete('/deleteActivity/:id', isAdmin, async (req, res) => {
   try {
     const activityId = req.params.id;
     await removeActivity(activityId);

@@ -155,7 +155,7 @@ router.route('/editprofile').get(async (req, res) => {
     const userNameInput = req.body.usernameInput;
 
     try {
-        const editStatus = await updateProfile(req.session.user.userId, firstNameInput, lastNameInput, userNameInput);
+        await updateProfile(req.session.user.userId, firstNameInput, lastNameInput, userNameInput);
         res.render('messages', { generalMessage: "Successfully changed!" })
 
     }

@@ -39,7 +39,7 @@ reviewsRouter.get('/review/:id', async (req, res) => {
   }
 });
 
-// Update review
+// Update review - user should be able to do this
 reviewsRouter.put('/updateReview/:id', async (req, res) => {
   try {
     const reviewId = req.params.id;
@@ -51,7 +51,7 @@ reviewsRouter.put('/updateReview/:id', async (req, res) => {
   }
 });
 
-// Remove review
+// Remove review - user should be able to do this
 reviewsRouter.delete('/deleteReview/:id', async (req, res) => {
   try {
     const reviewId = req.params.id;
