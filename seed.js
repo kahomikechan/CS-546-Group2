@@ -10,14 +10,14 @@ const users = [
     lastName: "Doe",
     email: "john@example.com",
     username: "john123",
-    password: "password123"
+    password: "Password123!"
   },
   {
     firstName: "Jane",
     lastName: "Doe",
     email: "jane@example.com",
     username: "jane123",
-    password: "password456"
+    password: "Password456!"
   },
 ];
 

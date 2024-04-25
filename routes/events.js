@@ -4,7 +4,7 @@ import { createEvent, getAllEvents, getEvent, removeEvent, updateEvent } from '.
 const eventsRouter = express.Router();
 
 // /event
-// route to create a new event
+// route to create a new event - logged in user
 eventsRouter.post('/createEvent', async (req, res) => {
   try {
     const eventData = req.body; 
@@ -15,7 +15,7 @@ eventsRouter.post('/createEvent', async (req, res) => {
   }
 });
 
-// route to get all events
+// route to get all events - logged in user
 eventsRouter.get('/allEvents', async (req, res) => {
   try {
     const allEvents = await getAllEvents();
@@ -25,7 +25,7 @@ eventsRouter.get('/allEvents', async (req, res) => {
   }
 });
 
-// route to get a specific event by ID
+// route to get a specific event by ID - logged in user
 eventsRouter.get('/event/:id', async (req, res) => {
   try {
     const eventId = req.params.id;
@@ -40,7 +40,8 @@ eventsRouter.get('/event/:id', async (req, res) => {
   }
 });
 
-// route to update an existing event
+// make this so only admin can do it
+// route to update an existing event - only admin 
 eventsRouter.put('/updateEvent/:id', async (req, res) => {
   try {
     const eventId = req.params.id;
@@ -52,7 +53,8 @@ eventsRouter.put('/updateEvent/:id', async (req, res) => {
   }
 });
 
-//route to delete an event
+
+//route to delete an event - user and admin
 eventsRouter.delete('/deleteEvent/:id', async (req, res) => {
   try {
     const eventId = req.params.id;

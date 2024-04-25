@@ -3,7 +3,7 @@ import { createActivity, getAllActivities, getActivity, removeActivity, updateAc
 
 const activitiesRouter = express.Router();
 
-//create activity
+//create activity - only admin
 activitiesRouter.post('/createActivity', async (req, res) => {
   try {
     const {activityName, activityAddress, activityHours, activityType, rating, activityAccommodations, activityPriceRange, reviews, activityLink, activityDescription} = req.body;
@@ -14,7 +14,7 @@ activitiesRouter.post('/createActivity', async (req, res) => {
   }
 });
 
-// get all activities
+// get all activities - logged in user
 activitiesRouter.get('/allActivities', async (req, res) => {
   try {
     const allActivities = await getAllActivities();
@@ -24,7 +24,7 @@ activitiesRouter.get('/allActivities', async (req, res) => {
   }
 });
 
-// get a specific activity by ID
+// get a specific activity by ID - logged in user
 activitiesRouter.get('/activity/:id', async (req, res) => {
   try {
     const activityId = req.params.id;
@@ -39,11 +39,11 @@ activitiesRouter.get('/activity/:id', async (req, res) => {
   }
 });
 
-// update an existing activity
+// update an existing activity - only admin
 activitiesRouter.put('/updateActivity/:id', async (req, res) => {
   try {
     const activityId = req.params.id;
-    const updatedActivity = req.body; // Assuming request body contains updated activity data
+    const updatedActivity = req.body;
     await updateActivity(activityId, updatedActivity);
     res.json({ message: 'Activity updated successfully' });
   } catch (error) {
@@ -51,7 +51,7 @@ activitiesRouter.put('/updateActivity/:id', async (req, res) => {
   }
 });
 
-// delete an activity
+// delete an activity - only admin
 activitiesRouter.delete('/deleteActivity/:id', async (req, res) => {
   try {
     const activityId = req.params.id;

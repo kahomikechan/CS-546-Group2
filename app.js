@@ -59,6 +59,8 @@ app.get('/random-activity', async (req, res) => {
     }
 });
 
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use(session({
     resave: true,
     saveUninitialized: true,

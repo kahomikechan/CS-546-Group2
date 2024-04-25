@@ -113,12 +113,13 @@ router
 
 router.route('/home').get(async (req, res) => {
     //code here for GET
-
     //const {  role } = req.session.user;
     // const currentTime = new Date().toLocaleString(); // Assuming you want the time in a readable format
 
     // Check if user is admin
     // const isAdmin = role === 'admin';
+    // redirect user to login page if they're not lopgged in
+    if (!req.session.user) return res.redirect('/login');
 
     res.render('home');
 
