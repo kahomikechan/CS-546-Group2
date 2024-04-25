@@ -11,6 +11,15 @@ const isAdmin = (req, res, next) => {
   }
 };
 
+//checks if the user is logged in/approved by admin
+const isAuthenticated = (req, res, next) => {
+  if (req.session.user) {
+    next();
+  } else {
+    res.status(401).json({ error: 'Unauthorized' });
+  }
+};
+
 //create activity - only admin
 activitiesRouter.post('/createActivity', isAdmin, async (req, res) => {
   try {
@@ -23,7 +32,7 @@ activitiesRouter.post('/createActivity', isAdmin, async (req, res) => {
 });
 
 // get all activities - logged in user
-activitiesRouter.get('/allActivities', async (req, res) => {
+activitiesRouter.get('/allActivities', isAuthenticated, async (req, res) => {
   try {
     const allActivities = await getAllActivities();
     res.json(allActivities);
@@ -33,7 +42,7 @@ activitiesRouter.get('/allActivities', async (req, res) => {
 });
 
 // get a specific activity by ID - logged in user
-activitiesRouter.get('/activity/:id', async (req, res) => {
+activitiesRouter.get('/activity/:id', isAuthenticated, async (req, res) => {
   try {
     const activityId = req.params.id;
     const activity = await getActivity(activityId);
