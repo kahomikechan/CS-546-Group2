@@ -20,6 +20,7 @@
     "express": "^4.19.2",
     "express-handlebars": "^7.1.2",
     "express-session": "^1.18.0",
+    "fs": "^0.0.1-security",
     "mongodb": "^6.5.0"
   },
   "bugs": {

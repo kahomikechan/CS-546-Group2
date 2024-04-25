@@ -46,19 +46,30 @@ app.use(bodyParser.json());
 //     }
 // });
 
-app.get('/random-activity', async (req, res) => {
-    try {
-        const db = client.db('database_name'); 
-        const collection = db.collection('activities');
-        const count = await collection.countDocuments();
-        const randomIndex = Math.floor(Math.random() * count);
-        const randomActivity = await collection.findOne({}, { skip: randomIndex });
-        res.json(randomActivity);
-    } catch (error) {
-        console.error('Error fetching random activity:', error);
-        res.status(500).json({ error: 'Failed to fetch random activity' });
-    }
-});
+// app.get('/random-activity', async (req, res) => {
+//     try {
+//         const db = client.db('database_name'); 
+//         const collection = db.collection('activities');
+//         const count = await collection.countDocuments();
+//         const randomIndex = Math.floor(Math.random() * count);
+//         const randomActivity = await collection.findOne({}, { skip: randomIndex });
+//         res.json(randomActivity);
+//     } catch (error) {
+//         console.error('Error fetching random activity:', error);
+//         res.status(500).json({ error: 'Failed to fetch random activity' });
+//     }
+// });
+// app.get('/', async (req, res) => {
+//     try {
+//         // Generate a random number between 1 and 13
+//         const randomIndex = Math.floor(Math.random() * 13) + 1;
+//         const randomImage = `img${randomIndex}.jpeg`;
+//         res.render('layouts/main', { randomImage });
+//     } catch (err) {
+//         console.error('Error reading images directory:', err);
+//         res.status(500).send('Internal Server Error');
+//     }
+// });
 
 // Define the directory from which to serve static files
 const publicDirectoryPath = path.join(__dirname, 'public');
