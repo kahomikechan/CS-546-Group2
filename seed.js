@@ -2,6 +2,7 @@
 // admin user
 // 3 activities - 2 reviews each
 // 2 events - create third one during walkthrough - 3 reviews each
+import { MongoClient } from 'mongodb';
 
 const users = [
   {
@@ -87,5 +88,29 @@ const reviews = [
   },
 ];
 
-// Export data for seeding
-module.exports = { users, activities, events, reviews };
+const uri = 'mongodb://localhost:27017'; 
+
+const dbName = 'CS546_Group2_Final_Project'; 
+
+async function seedDatabase() {
+  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+  try {
+    await client.connect();
+
+    const db = client.db(dbName);
+
+    await db.collection('users').insertMany(users);
+    await db.collection('activities').insertMany(activities);
+    await db.collection('events').insertMany(events);
+    await db.collection('reviews').insertMany(reviews);
+
+    console.log('Seed data inserted successfully.');
+  } catch (error) {
+    console.error('Error seeding database:', error);
+  } finally {
+    await client.close();
+  }
+}
+
+seedDatabase();
