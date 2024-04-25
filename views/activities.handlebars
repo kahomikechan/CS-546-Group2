@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parks in Hoboken</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="/public/css/styles.css">
+    
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</head>
+<body>
+<h2 class="h1">Activities in Hoboken</h2>
+<div class="container"> 
+    <div id="map"></div> 
+    <div class="sidebar" id="sidebar"> 
+        
+        <label for="priceFilter">Filter by maximum price:</label>
+        <select id="priceFilter">
+            <option value="100">Show All</option>
+            <option value="30">$30 or less</option>
+            <option value="20">$20 or less</option>
+            <option value="10">$10 or less</option>
+            <option value="0">Free</option>
+        </select>
+        
+        <label for="ratingFilter">Filter by maximum rating:</label>
+        <select id="ratingFilter">
+            <option value="5">5</option>
+            <option value="4">4 or less</option>
+            <option value="3">3 or less</option>
+            <option value="2">2 or less</option>
+            <option value="1">1 or less</option>
+        </select>
+        <div id="parkList"> 
+           
+        </div>
+    </div>
+</div>
+<a href="/home" class="link">Go back to Home</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.2/purify.min.js"></script>
+<script src="/js/activities.js"></script>
+
+</body>
+</html>

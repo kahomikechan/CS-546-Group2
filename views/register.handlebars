@@ -39,17 +39,16 @@ registration handelbars
             <label for="usernameInput">UserName:</label>
             <input type="text" class="input-field" name="usernameInput" required>
         </div>
-        {{!-- <div>
-            <label for="roleInput">Role:</label>
-            <select id="roleInput" name="roleInput" required>
-                <option value="admin">Admin</option>
-                <option value="user">User</option>
-            </select>
-        </div> --}}
         <button class="button" type="submit">Register</button>
     </form>
      <div id="error-message" class="error"></div> 
     <p>Already have an account? <a href="/login" class="link">Click here to log in!</a></p>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.2/purify.min.js"
+    ></script>
+    <script>
+      function sanitize(input) { return DOMPurify.sanitize(input); }
+    </script>
     <script src="/public/js/client_side_validation.js"></script>
 </body>
 </html>
