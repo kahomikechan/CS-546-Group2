@@ -46,7 +46,7 @@ eventsRouter.post('/createEvent', isAuthenticated, async (req, res) => {
 eventsRouter.get('/allEvents', isAuthenticated, async (req, res) => {
   try {
     const allEvents = await getAllEvents();
-    res.render('eventlistpage', {allEvents} );
+    res.render('eventlistpage', { allEvents });
   } catch (error) {
     res.render('error', { errorMessage: "Check back later!" });
   }
