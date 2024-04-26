@@ -28,7 +28,7 @@ eventsRouter.post('/createEvent', isAuthenticated, async (req, res) => {
   try {
     const eventData = req.body; 
     const newEvent = await createEvent(eventData);
-    res.status(201).json(newEvent);
+    res.render('createEvent', {newEvent});
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -38,7 +38,7 @@ eventsRouter.post('/createEvent', isAuthenticated, async (req, res) => {
 eventsRouter.get('/allEvents', isAuthenticated, async (req, res) => {
   try {
     const allEvents = await getAllEvents();
-    res.json(allEvents);
+    res.render('events', {allEvents} );
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

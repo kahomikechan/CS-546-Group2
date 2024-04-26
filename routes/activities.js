@@ -25,9 +25,9 @@ activitiesRouter.post('/createActivity', isAdmin, async (req, res) => {
   try {
     const {activityName, activityAddress, activityHours, activityType, rating, activityAccommodations, activityPriceRange, reviews, activityLink, activityDescription} = req.body;
     const newActivity = await createActivity(activityName, activityAddress, activityHours, activityType, rating, activityAccommodations, activityPriceRange, reviews, activityLink, activityDescription);
-    res.status(201).json(newActivity);
+    res.render('activities', { newActivity });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.render('error', { errorMessage: "Make sure all forms are filled in." });
   }
 });
 
@@ -35,9 +35,9 @@ activitiesRouter.post('/createActivity', isAdmin, async (req, res) => {
 activitiesRouter.get('/allActivities', isAuthenticated, async (req, res) => {
   try {
     const allActivities = await getAllActivities();
-    res.json(allActivities);
+    res.render('activities', { allActivities });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.render('error', { errorMessage: "Check back later!" });
   }
 });
 
@@ -47,35 +47,38 @@ activitiesRouter.get('/activity/:id', isAuthenticated, async (req, res) => {
     const activityId = req.params.id;
     const activity = await getActivity(activityId);
     if (!activity) {
-      res.status(404).json({ error: 'Activity not found' });
+      res.render('error', { errorMessage: "Please enter an activity ID." });
     } else {
-      res.json(activity);
+      res.render('activitityDetail', { activity });
     }
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.render('error', { errorMessage: "That activity does not exist." });
   }
 });
 
-// update an existing activity - only admin
-activitiesRouter.put('/updateActivity/:id', isAdmin, async (req, res) => {
-  try {
-    const activityId = req.params.id;
-    const updatedActivity = req.body;
-    await updateActivity(activityId, updatedActivity);
-    res.json({ message: 'Activity updated successfully' });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// // update an existing activity - only admin
+// activitiesRouter.put('/updateActivity/:id', isAdmin, async (req, res) => {
+//   try {
+//     const activityId = req.params.id;
+//     const updatedActivity = req.body;
+//     await updateActivity(activityId, updatedActivity);
+//     res.json({ message: 'Activity updated successfully' });
+//   } catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
+// });
 
 // delete an activity - only admin
 activitiesRouter.delete('/deleteActivity/:id', isAdmin, async (req, res) => {
   try {
     const activityId = req.params.id;
     await removeActivity(activityId);
-    res.json({ message: 'Activity deleted successfully' });
+
+    const allActivities = await getAllActivities();
+    
+    res.render('deleteActivity', { allActivities });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.render('error', { errorMessage: "Failed to delete activity." });
   }
 });
 

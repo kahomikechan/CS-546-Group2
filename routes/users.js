@@ -277,5 +277,7 @@ router.post("/admin/approve", async (req, res) => {
     }
     res.render("activities");
   });
+
+  
   
   export default router;

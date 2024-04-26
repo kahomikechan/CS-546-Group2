@@ -2,22 +2,29 @@
 // admin user
 // 3 activities - 2 reviews each
 // 2 events - create third one during walkthrough - 3 reviews each
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
+import  bcrypt  from 'bcryptjs';
 
 const users = [
   {
     firstName: "John",
     lastName: "Doe",
-    email: "john@example.com",
+    emailAddress: "john@example.com",
     username: "john123",
-    password: "Password123!"
+    password: await bcrypt.hash("Password123!", 10),
+    isAdminApproved: "true",
+    reviews: Array,
+    role: "user"
   },
   {
     firstName: "Jane",
     lastName: "Doe",
-    email: "jane@example.com",
+    emailAddress: "jane@example.com",
     username: "jane123",
-    password: "Password456!"
+    password: await bcrypt.hash("Password456!", 10),
+    isAdminApproved: "true",
+    reviews: Array,
+    role: "user"
   },
 ];
 
@@ -77,14 +84,14 @@ const reviews = [
   {
     rating: 4.5,
     reviewText: "Great park for the kids!",
-    reviewerId: ObjectId(), // Insert the ObjectId of the user who left the review
-    activityId: ObjectId() // Insert the ObjectId of the activity being reviewed
+    reviewerId: new ObjectId(), // Insert the ObjectId of the user who left the review
+    activityId: new ObjectId() // Insert the ObjectId of the activity being reviewed
   },
   {
     rating: 4.8,
     reviewText: "Nice area for walks. The whole family had a great time",
-    reviewerId: ObjectId(),
-    activityId: ObjectId() 
+    reviewerId: new ObjectId(),
+    activityId: new ObjectId() 
   },
 ];
 

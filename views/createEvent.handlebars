@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="/public/css/styles.css">
+
+     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</head>
+<body>
+    <h1>Create Event</h1>
+    <form action="/createEvent" method="POST">
+
+        <label for="eventName">Event Name:</label><br>
+        <input type="text" id="eventName" name="eventName" required><br><br>
+
+        <label for="eventAddress">Event Address:</label><br>
+        <input type="text" id="eventAddress" name="eventAddress" required><br><br>
+
+        <label for="eventDescription">Event Description:</label><br>
+        <textarea id="eventDescription" name="eventDescription" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="time">Time:</label><br>
+        <input type="datetime-local" id="time" name="time" required><br><br>
+
+        <label for="eventContact">Event Contact:</label><br>
+        <input type="text" id="eventContact" name="eventContact" required><br><br>
+
+        <label for="eventType">Event Type:</label><br>
+        <select id="eventType" name="eventType" required>
+            <option value="Conference">Conference</option>
+            <option value="Workshop">Workshop</option>
+            <option value="Seminar">Seminar</option>
+            <option value="Concert">Concert</option>
+            <option value="Party">Party</option>
+            <option value="Other">Other</option>
+        </select><br><br>
+
+        <label for="eventAccommodations">Event Accommodations:</label><br>
+        <textarea id="eventAccommodations" name="eventAccommodations" rows="4" cols="50"></textarea><br><br>
+
+        <label for="eventPriceRange">Event Price Range:</label><br>
+        <input type="text" id="eventPriceRange" name="eventPriceRange"><br><br>
+
+        <input type="submit" value="Create Event">
+    </form>
+    <script src="/public/js/eventValidation.js"></script>
+</body>
+</html>
