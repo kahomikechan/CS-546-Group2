@@ -104,3 +104,64 @@
 .link:hover {
     text-decoration: underline;
 }
+
+#map {
+    height: 550px;
+    width: 620px;
+    border: 5px solid #ddd;
+}
+
+.container {
+    display: flex;
+    height: 560px;
+    margin-bottom: 50px;
+}
+
+.sidebar {
+    width: 25%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.sidebar {
+    width: 25%;
+    background: linear-gradient(to bottom, #f7f7f7, #e3e3e3);
+    padding: 15px;
+    border-right: 2px solid #ccc;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+#map {
+    flex: 1;
+}
+
+.events{
+    margin-top: 100px;
+    margin-bottom: 90px;
+    background: #f4f4f4;
+    border-left: 3px solid #ccc;
+    border-top: 3px solid #ccc;
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    padding: 10px;
+}
+
+.event{
+    border: 1px solid rgb(175, 210, 192);
+    padding: 15px;
+    box-shadow: #e3e3e3;
+    color:#4CAF50;
+}
+
+.event:hover{
+    background-color: #4CAF50;
+        opacity: 1;
+        color: white;
+        text-decoration: none;
+}
