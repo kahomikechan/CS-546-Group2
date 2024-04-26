@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Review</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="/public/css/styles.css">
+
+     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</head>
+<body>
+    <h1>Create Review</h1>
+    <form id="reviewForm">
+    <label for="reviewDescription">Review:</label><br>
+    <textarea id="reviewDescription" name="reviewText" rows="4" cols="50" required></textarea><br><br>
+
+<label for="filterByRating">Filter by Rating:</label>
+<select id="filterByRating" name="filterByRating" required>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+</select>
+
+    <input type="submit" value="Create Review">
+</form>
+    <script src="/public/js/reviewValidation.js"></script>
+</body>
+</html>
