@@ -9,6 +9,12 @@
     text-align: center;
 } */
 
+.title {
+    color: darksalmon;
+    text-align: center;
+    width: 60
+}
+
 
 .input-field {
     margin-bottom: 10px;
@@ -35,6 +41,8 @@
 
 .h1{
     font-size: 3.2rem;
+    color: darksalmon;
+    text-align: center;
 }
 
 .link-size{
