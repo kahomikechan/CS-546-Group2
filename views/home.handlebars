@@ -30,8 +30,8 @@
     <title>Homepage</title>
     <style>
         #activityImage img {
-            width: 100%;
-            height: 20%;
+            width: 75%;
+            height: 10%;
         }
     </style>
     <link rel="stylesheet" href="/public/css/styles.css">
@@ -41,11 +41,16 @@
         <!-- Display specific images -->
         <img src="/public/images/img7.jpeg" alt="Image 7">
     </div>
+
+        <form action="/search" method="GET">
+        <input type="text" name="query" placeholder="Search activities...">
+        <button type="submit">Search</button>
+    </form>
     
     <ul>
-        <li><a href="/user-account.html">User Account</a></li>
         <li><a href="/allActivities">Activities</a></li>
         <li><a href="/allEvents">Events</a></li>
+        <li><a href="/allReviews">Reviews</a></li>
         <li><a href="/createEvent">Create Event</a></li>
     </ul>
     <p><a href="/editprofile" class="link">Edit Profile</a></p>

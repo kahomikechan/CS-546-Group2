@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews List Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Reviews List Page</h1>
+
+    <form id="searchForm">
+        <label for="searchInput">Search</label>
+        <input type="text" id="searchInput" name="searchInput">
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Sort/Filter Options:</h2>
+    <form id="sortFilterForm">
+        <label for="sortByDate">Sort by Date:</label>
+        <select id="sortByDate" name="sortByDate">
+            <option value="asc">2024</option>
+            <option value="desc">2023</option>
+            <option value="desc">2022</option>
+        </select>
+
+        {{!-- <label for="sortByCreator">Sort by Event Creator:</label>
+        <select id="sortByCreator" name="sortByCreator">
+            <!-- options for event creators go here -->
+        </select> --}}
+
+        <label for="filterByCategory">Filter by Rating</label>
+        <select id="filterByCategory" name="filterByCategory">
+           <option value="desc">1</option>
+           <option value="desc">2</option>
+           <option value="desc">3</option>
+           <option value="desc">4</option>
+           <option value="desc">5</option>
+        </select>
+
+        <button type="submit">Apply</button>
+    </form>
+
+    <div id="reviewsList">
+    </div>
+
+    <script src="/routes/reviews.js"></script>
+</body>
+</html>

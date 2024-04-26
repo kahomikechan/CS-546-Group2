@@ -30,7 +30,7 @@ eventsRouter.post('/createEvent', isAuthenticated, async (req, res) => {
     const newEvent = await createEvent(eventData);
     res.render('createEvent', {newEvent});
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.render('error', { errorMessage: "Unable to create an event." });
   }
 });
 

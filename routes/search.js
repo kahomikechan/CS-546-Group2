@@ -1,16 +1,16 @@
 import express from 'express';
-import { searchActivities, searchEvents, searchReviews } from '../data/search.js';
+import { searchActivity, searchEvent, searchReview } from '../data/search.js';
 
-const searchRouter = express.Router;
+const searchRouter = express.Router();
 
 // Define the route handler for the /search endpoint
 searchRouter.get('/search', async (req, res) => {
     try {
         const query = req.query.query;
 
-        const activitiesResults = await searchActivities(query);
-        const eventsResults = await searchEvents(query);
-        const reviewsResults = await searchReviews(query);
+        const activitiesResults = await searchActivity(query);
+        const eventsResults = await searchEvent(query);
+        const reviewsResults = await searchReview(query);
 
         const searchResults = {
             activities: activitiesResults,

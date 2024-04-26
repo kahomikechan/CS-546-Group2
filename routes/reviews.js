@@ -18,9 +18,9 @@ reviewsRouter.post('/createReview', async (req, res) => {
 reviewsRouter.get('/allReviews', async (req, res) => {
   try {
     const allReviews = await getAllReviews();
-    res.json(allReviews);
+    res.render('allReviews', { allReviews });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.render('error', { errorMessage: "Check back later!" });
   }
 });
 
@@ -32,7 +32,7 @@ reviewsRouter.get('/review/:id', async (req, res) => {
     if (!review) {
       res.status(404).json({ error: 'Review not found' });
     } else {
-      res.json(review);
+      res.render(review);
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
