@@ -21,6 +21,9 @@ const isAuthenticated = (req, res, next) => {
   }
 };
 
+// /event
+// route to create a new event - logged in user
+
 eventsRouter.get('/createEvent', isAuthenticated, async (req, res) => {
   try {
     res.render('createEvent');
@@ -28,8 +31,7 @@ eventsRouter.get('/createEvent', isAuthenticated, async (req, res) => {
     res.render('error', { errorMessage: "Unable to load the createEvent page." });
   }
 });
-// /event
-// route to create a new event - logged in user
+
 eventsRouter.post('/createEvent', isAuthenticated, async (req, res) => {
   try {
     const eventData = req.body; 
@@ -56,7 +58,7 @@ eventsRouter.get('/event/:id',isAuthenticated, async (req, res) => {
     const eventId = req.params.id;
     const event = await getEvent(eventId);
     if (!event) {
-      res.render('error', { errorMessage: "Even doesn't exist." });
+      res.render('error', { errorMessage: "Event doesn't exist." });
     } else {
       res.render('events', { event });
     }
