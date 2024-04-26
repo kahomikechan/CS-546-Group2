@@ -4,38 +4,58 @@
 import { events } from "../config/mongoCollections.js";
 import { ObjectId } from 'mongodb';
 
-const createEvent = async (
-    eventName,
-    eventAddress,
-    eventDescription,
-    time,
-    eventContact,
-    eventType,
-    eventAccommodations,
-    eventPriceRange,
-    participants
-) => {
-    const eventCollection = await events();
+// const createEvent = async (
+//     eventName,
+//     eventAddress,
+//     eventDescription,
+//     time,
+//     eventContact,
+//     eventType,
+//     eventAccommodations,
+//     eventPriceRange,
+//     participants
+// ) => {
+//     const eventCollection = await events();
 
-    const newEvent = {
-        eventName,
-        eventAddress,
-        eventDescription,
-        time,
-        eventContact,
-        eventType,
-        eventAccommodations,
-        eventPriceRange,
-        participants
-    };
+//     const newEvent = {
+//         eventName,
+//         eventAddress,
+//         eventDescription,
+//         time,
+//         eventContact,
+//         eventType,
+//         eventAccommodations,
+//         eventPriceRange,
+//         participants
+//     };
 
-    const insertInfo = await eventCollection.insertOne(newEvent);
+//     const insertInfo = await eventCollection.insertOne(newEvent);
     
+//     if (insertInfo.insertedCount === 0) throw new Error("Could not add event.");
+
+//     if (!eventName || !eventAddress || !eventDescription || !time || !eventContact || !eventType || !eventAccommodations || !eventPriceRange
+//         || !participants) throw new Error("All fields must have input.")
+
+//     return newEvent;
+// };
+
+const createEvent = async (eventData) => {
+    const eventCollection = await events();
+    const newEvent = {
+        eventName: eventData.eventName,
+        eventAddress: eventData.eventAddress,
+        eventDescription: eventData.eventDescription,
+        time: eventData.time,
+        eventContact: eventData.eventContact,
+        eventType: eventData.eventType,
+        eventAccommodations: eventData.eventAccommodations,
+        eventPriceRange: eventData.eventPriceRange,
+        participants: eventData.participants
+    };
+    const insertInfo = await eventCollection.insertOne(newEvent);
     if (insertInfo.insertedCount === 0) throw new Error("Could not add event.");
-
-    if (!eventName || !eventAddress || !eventDescription || !time || !eventContact || !eventType || !eventAccommodations || !eventPriceRange
-        || !participants) throw new Error("All fields must have input.")
-
+    if (!newEvent.eventName || !newEvent.eventAddress || !newEvent.eventDescription || !newEvent.time || !newEvent.eventContact || !newEvent.eventType || !newEvent.eventAccommodations || !newEvent.eventPriceRange
+        || !newEvent.participants) throw new Error("All fields must have input.");
     return newEvent;
 };
 

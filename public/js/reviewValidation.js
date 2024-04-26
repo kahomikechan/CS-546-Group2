@@ -37,3 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+async function updateAllReviews() {
+    try {
+        const response = await fetch('/allReviews');
+        if (response.ok) {
+            const allReviewsHTML = await response.text();
+            document.getElementById('allReviews').innerHTML = allReviewsHTML;
+        } else {
+            console.error('Failed to retrieve all reviews.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}

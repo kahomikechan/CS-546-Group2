@@ -30,15 +30,15 @@ eventsRouter.get('/createEvent', isAuthenticated, async (req, res) => {
 });
 // /event
 // route to create a new event - logged in user
-// eventsRouter.post('/createEvent', isAuthenticated, async (req, res) => {
-//   try {
-//     const eventData = req.body; 
-//     const newEvent = await createEvent(eventData);
-//     res.render('createEvent', {newEvent});
-//   } catch (error) {
-//     res.render('error', { errorMessage: "Unable to create an event." });
-//   }
-// });
+eventsRouter.post('/createEvent', isAuthenticated, async (req, res) => {
+  try {
+    const eventData = req.body; 
+    const newEvent = await createEvent(eventData);
+    res.render('createEvent', { newEvent });
+  } catch (error) {
+    res.render('error', { errorMessage: "Unable to create an event." });
+  }
+});
 
 // route to get all events - logged in user
 eventsRouter.get('/allEvents', isAuthenticated, async (req, res) => {

@@ -8,7 +8,7 @@ reviewsRouter.post('/createReview', async (req, res) => {
   try {
     const { rating, reviewText, reviewerId, activityId } = req.body;
     const newReview = await createReview(rating, reviewText, reviewerId, activityId);
-    res.render('createReview');
+    res.render('allReviews', { newReview });
   } catch (error) {
     res.render('error', { errorMessage: "Unable to submit review." });
   }
