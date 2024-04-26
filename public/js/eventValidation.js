@@ -1,7 +1,7 @@
 // eventValidation.js
 
 document.addEventListener('DOMContentLoaded', function() {
-    const eventForm = document.getElementById('eventForm');
+    const eventForm = document.getElementById('createEvent');
 
     eventForm.addEventListener('submit', function(event) {
         event.preventDefault();

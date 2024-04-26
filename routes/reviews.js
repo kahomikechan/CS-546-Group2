@@ -8,9 +8,9 @@ reviewsRouter.post('/createReview', async (req, res) => {
   try {
     const { rating, reviewText, reviewerId, activityId } = req.body;
     const newReview = await createReview(rating, reviewText, reviewerId, activityId);
-    res.status(201).json(newReview);
+    res.render('createReview', { newReview });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.render('error', { errorMessage: "Unable to submit review." });
   }
 });
 
@@ -30,12 +30,12 @@ reviewsRouter.get('/review/:id', async (req, res) => {
     const reviewId = req.params.id;
     const review = await getReview(reviewId);
     if (!review) {
-      res.status(404).json({ error: 'Review not found' });
+      res.render('error', { errorMessage: "Unable to find review." });
     } else {
-      res.render(review);
+      res.render('allReviews', { review });
     }
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.render('error', { errorMessage: "Unable to find review." });
   }
 });
 
