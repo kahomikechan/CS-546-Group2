@@ -50,12 +50,12 @@ eventsRouter.get('/event/:id',isAuthenticated, async (req, res) => {
     const eventId = req.params.id;
     const event = await getEvent(eventId);
     if (!event) {
-      res.status(404).json({ error: 'Event not found' });
+      res.render('error', { errorMessage: "Even doesn't exist." });
     } else {
-      res.json(event);
+      res.render('events', { event });
     }
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.render('error', { errorMessage: "Failed to load." });
   }
 });
 

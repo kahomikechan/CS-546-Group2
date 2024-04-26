@@ -48,7 +48,7 @@ const getActivity = async (activityId) => {
     throw new Error("Invalid activity ID");
 
     const activityCollection = await activities();
-    const activity = await activityCollection.findOne({ _id: ObjectId(activityId) });
+    const activity = await activityCollection.findOne({ _id: new ObjectId(activityId) });
     if (!activity) throw new Error("Activity not found");
 
     return activity;
@@ -60,7 +60,7 @@ const removeActivity = async (activityId) => {
     throw new Error("Invalid activity ID");
 
     const activityCollection = await activities();
-    const deletionInfo = await activityCollection.deleteOne({ _id: ObjectId(activityId) });
+    const deletionInfo = await activityCollection.deleteOne({ _id: new ObjectId(activityId) });
     if (deletionInfo.deletedCount === 0) throw new Error("Could not delete activity");
 
     return true;
@@ -79,7 +79,7 @@ const updateActivity = async (
         $set: updatedActivityData
   };
 
-    const updateInfo = await activityCollection.updateOne({ _id: ObjectId(activityId) }, updatedActivity);
+    const updateInfo = await activityCollection.updateOne({ _id: new ObjectId(activityId) }, updatedActivity);
     if (updateInfo.modifiedCount === 0) throw new Error("Could not update activity");
 
     return true;

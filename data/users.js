@@ -191,7 +191,7 @@ const approveProfile = async (
 
     const usersCollection = await users();
     const updatedInfo = await usersCollection.findOneAndUpdate(
-      {_id: ObjectId(userId)},
+      {_id: new ObjectId(userId)},
       {$set: updatedProfile},
       {returnDocument: 'after'}
     );

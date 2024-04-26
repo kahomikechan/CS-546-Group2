@@ -52,7 +52,7 @@ function sanitize(input) {
       price: "$18",
     },
     {
-      title: "the little play co.",
+      title: "The Little Play Co.",
       rating: 3.9,
       reviews: 34,
       type: "Children's amusement center",

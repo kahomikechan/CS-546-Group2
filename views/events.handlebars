@@ -2,37 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Parks in Hoboken</title>
-    
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="/public/css/styles.css">
-    
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ event.title }}</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h2 class="h1">Parks in Hoboken</h2>
-<div class="container"> 
-    <div id="map"></div> 
-    <div class="sidebar" id="sidebar"> 
-        <label for="ratingFilter">Filter by maximum rating:</label>
-        <select id="ratingFilter"> 
-            <option value="5">Show All (0-5)</option>
-            <option value="5">Up to 5</option>
-            <option value="4">Up to 4</option>
-            <option value="3">Up to 3</option>
-            <option value="2">Up to 2</option>
-            <option value="1">Up to 1</option>
-        </select>
-        <div id="parkList"> 
-          
-        </div>
-    </div>
-</div>
-<a href="/home" class="link">Go back to Home</a>
+    <h1>{{ event.title }}</h1>
+    <p>Date: {{ event.date }}</p>
+    <p>Category: {{ event.category }}</p>
+    <p>Description: {{ event.description }}</p>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.2/purify.min.js"></script>
-<script src="/public/js/parks.js"></script>
+    <!-- Additional details as needed -->
 
+    <p><a href="/allEvents" class="link link-size">Back to Events List</a></p>
+    <script src="/routes/events.js"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@ const users = [
     username: "john123",
     password: await bcrypt.hash("Password123!", 10),
     isAdminApproved: "true",
-    reviews: [Array],
+    reviews: [],
     role: "user"
   },
   {
@@ -23,7 +23,7 @@ const users = [
     username: "jane123",
     password: await bcrypt.hash("Password456!", 10),
     isAdminApproved: "true",
-    reviews: [Array],
+    reviews: [],
     role: "user"
   },
 ];
