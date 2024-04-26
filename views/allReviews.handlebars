@@ -62,6 +62,15 @@
     </form>
 
     <div id="allReviews">
+        {{#each allReviews}}
+        <div class="review">
+    <h3>{{this.review}}</h3>
+    <p>Rating: {{this.rating}}</p>
+    <p>Review: {{this.reviewText}}</p>
+    
+  </div>
+  {{/each}}
+    </div>
     </div>
     <p><a href="/" class="link link-size">Home</a></p>
     <script src="/public/js/reviewValidation.js"></script>
