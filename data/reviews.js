@@ -34,7 +34,8 @@ const newReview = {
     reviewerId,
     activityId,
     rating,
-    reviewText
+    reviewText,
+    reported: false
 };
 
 const usersCollection = await users();
@@ -62,9 +63,12 @@ return newReview;
 };
 
 
-const getAllReviews = async () => {
+const getAllReviews = async (reportedOnly = false) => {
     const reviewsCollection = await reviews();
-    let reviewsList = await reviewsCollection.find({}).toArray();
+    
+    const filter = reportedOnly ? { reported: true } : {};
+
+    let reviewsList = await reviewsCollection.find(filter).toArray();
     if (!reviewsList) throw new Error('Could not get all reviews');
     reviewsList = reviewsList.map((element) => {
       element._id = element._id.toString();
@@ -148,4 +152,14 @@ const updateReview = async (
 
 };
 
-export { createReview, getAllReviews, removeReview, updateReview, getReview }
+const reportReview = async (reviewId) => {
+  const reviewsCollection = await reviews();
+  await reviewsCollection.updateOne(
+      { _id: new ObjectId(reviewId) },
+      { $set: { reported: true } }
+  );
+
+  return `Review with ID ${reviewId} has been reported.`;
+};
+
+export { createReview, getAllReviews, removeReview, updateReview, getReview, reportReview }
