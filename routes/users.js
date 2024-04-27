@@ -11,7 +11,7 @@ const router = Router();
 router.route('/').get(async (req, res) => {
   if (!req.session.user) {
     // Redirect non-authenticated users to the login route
-    return res.redirect('/login');
+    return res.redirect('/home');
 }else{
   if (req.session.user.role === 'admin') {
     res.redirect('/admin');
@@ -80,6 +80,9 @@ router
   
       try{
         const loggedIn = await loginUser(emailAddress,password);
+        if (!loggedIn) {
+          res.redirect('guesthome');
+        }
         console.log("routes -> "+ loggedIn.isAdminApproved)
         // Storing user information in session
         req.session.user = {
@@ -116,14 +119,17 @@ router
   router.route('/home').get(async (req, res) => {
     const userId = req.session.user?.userId; // Get user ID from session
 
-    if (!userId) {
-      return res.status(401).render("error", {
-        errorMessage: "Unauthorized access. Please log in.",
-      });
-    }
+    // if (!userId) {
+    //   return res.status(401).render("error", {
+    //     errorMessage: "Unauthorized access. Please log in.",
+    //   });
+    // }
+      if (!userId) {
+        res.render('guesthome');
+      } else {
   
       res.render('home');
-  
+      }
   });
 
 

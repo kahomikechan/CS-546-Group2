@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        #activityImage img {
+            width: 75%;
+            height: 10%;
+        }
+    </style>
+    <link rel="stylesheet" href="/public/css/styles.css">
+</head>
+<body>
+    <div id="activityImage">
+        <!-- Display specific images -->
+        <img src="/public/images/img7.jpeg" alt="Image 7">
+    </div>
+
+        <form action="/search" method="GET">
+        <input type="text" name="query" placeholder="Search activities...">
+        <button type="submit">Search</button>
+    </form>
+    
+    <ul>
+        <li><a href="/map">Activities Map</a></li>
+        <li><a href="/allActivities">Activities</a></li>
+        <li><a href="/allEvents">Events</a></li>
+        <li><a href="/allReviews">Reviews</a></li>
+        <li><a href="/createEvent">Create Event</a></li>
+    </ul>
+
+    <p><a href="/register" class="link">Register</a></p>
+</body>
+</html>

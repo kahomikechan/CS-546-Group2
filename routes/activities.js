@@ -21,7 +21,7 @@ const isAuthenticated = (req, res, next) => {
 };
 
 // Route to render the map
-activitiesRouter.get('/map', isAuthenticated, async (req, res) => {
+activitiesRouter.get('/map', async (req, res) => {
   try {
     const dataForMap = {
 
@@ -44,7 +44,7 @@ activitiesRouter.post('/createActivity', isAdmin, async (req, res) => {
 });
 
 // get all activities - logged in user
-activitiesRouter.get('/allActivities', isAuthenticated, async (req, res) => {
+activitiesRouter.get('/allActivities', async (req, res) => {
   try {
     const allActivities = await getAllActivities();
     res.render('activitylistpage', { allActivities });
@@ -54,7 +54,7 @@ activitiesRouter.get('/allActivities', isAuthenticated, async (req, res) => {
 });
 
 // get a specific activity by ID - logged in user
-activitiesRouter.get('/activity/:id', isAuthenticated, async (req, res) => {
+activitiesRouter.get('/activity/:id', async (req, res) => {
   try {
     const activityId = req.params.id;
     const activity = await getActivity(activityId);

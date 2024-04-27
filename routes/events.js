@@ -17,7 +17,7 @@ const isAuthenticated = (req, res, next) => {
   if (req.session.user) {
     next();
   } else {
-    res.status(401).json({ error: 'Unauthorized' });
+    res.render('error', { errorMessage: "You must login or register to be able to do this." });
   }
 };
 
@@ -43,7 +43,7 @@ eventsRouter.post('/createEvent', isAuthenticated, async (req, res) => {
 });
 
 // route to get all events - logged in user
-eventsRouter.get('/allEvents', isAuthenticated, async (req, res) => {
+eventsRouter.get('/allEvents', async (req, res) => {
   try {
     const allEvents = await getAllEvents();
     res.render('eventlistpage', { allEvents });
@@ -53,7 +53,7 @@ eventsRouter.get('/allEvents', isAuthenticated, async (req, res) => {
 });
 
 // route to get a specific event by ID - logged in user
-eventsRouter.get('/event/:id',isAuthenticated, async (req, res) => {
+eventsRouter.get('/event/:id', async (req, res) => {
   try {
     const eventId = req.params.id;
     const event = await getEvent(eventId);

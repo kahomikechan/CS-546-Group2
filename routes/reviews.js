@@ -17,12 +17,12 @@ const isAuthenticated = (req, res, next) => {
   if (req.session.user) {
     next();
   } else {
-    res.status(401).json({ error: 'Unauthorized' });
+    res.render('error', { errorMessage: "You must login or register to be able to do this." });
   }
 };
 
 // Create review
-reviewsRouter.post('/createReview', async (req, res) => {
+reviewsRouter.post('/createReview', isAuthenticated, async (req, res) => {
   try {
     const { rating, reviewText, reviewerId, activityId } = req.body;
     const newReview = await createReview(rating, reviewText, reviewerId, activityId);
@@ -31,7 +31,7 @@ reviewsRouter.post('/createReview', async (req, res) => {
     res.render('error', { errorMessage: "Unable to submit review." });
   }
 });
-reviewsRouter.get('/createReview', (req, res) => {
+reviewsRouter.get('/createReview',isAuthenticated, (req, res) => {
   res.render('createReview');
 });
 
