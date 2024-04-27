@@ -3,6 +3,24 @@ import { createReview, getAllReviews, getReview, removeReview, updateReview } fr
 
 const reviewsRouter = express.Router();
 
+//checks if the user is an admin
+const isAdmin = (req, res, next) => {
+  if (req.session.user && req.session.user.role === 'admin') {
+    next();
+  } else {
+    res.status(403).json({ error: 'Access forbidden' });
+  }
+};
+
+//checks if the user is logged in/approved by admin
+const isAuthenticated = (req, res, next) => {
+  if (req.session.user) {
+    next();
+  } else {
+    res.status(401).json({ error: 'Unauthorized' });
+  }
+};
+
 // Create review
 reviewsRouter.post('/createReview', async (req, res) => {
   try {
@@ -62,6 +80,40 @@ reviewsRouter.delete('/deleteReview/:id', async (req, res) => {
     res.json({ message: 'Review deleted successfully' });
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+});
+
+reviewsRouter.put('/reportReview/:id', isAuthenticated, async (req, res) => {
+  try {
+    const reviewId = req.params.id;
+    // Update the review document to set reported to true
+    const reviewsCollection = await reviews();
+    const result = await reviewsCollection.updateOne(
+      { _id: ObjectId(reviewId) },
+      { $set: { reported: true } }
+    );
+    if (result.modifiedCount === 0) {
+      res.render('error', { errorMessage: "Unable to find review." });
+    } else {
+      res.status(200).json({ message: 'Review reported successfully' });
+    }
+  } catch (error) {
+
+    console.error('Error reporting review:', error);
+    res.render('error', { errorMessage: "Unable to report review." });
+  }
+});
+
+reviewsRouter.get('/reportedReviews', isAdmin, async (req, res) => {
+  try {
+    const reviewsCollection = await reviews();
+    const reportedReviews = await reviewsCollection.find({ reported: true }).toArray();
+    
+    res.render('reportedReviews', { reportedReviews });
+  }
+  catch {
+    console.error('Error retrieving reported reviews:', error);
+    res.render('error', { errorMessage: 'Failed to retrieve reported reviews' });
   }
 });
 

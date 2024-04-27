@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reported Reviews</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+</head>
+<body>
+    <h1>Reported Reviews</h1>
+
+    {{#if reportedReviews.length}}
+        <div class="review-list">
+            {{#each reportedReviews}}
+                <div class="review">
+                    <h3>{{this.review}}</h3>
+                    <p>Rating: {{this.rating}}</p>
+                    <p>Review: {{this.reviewText}}</p>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <p>No reported reviews found.</p>
+    {{/if}}
+
+    <p><a href="/" class="link link-size">Home</a></p>
+</body>
+</html>
