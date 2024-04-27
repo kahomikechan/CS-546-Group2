@@ -5,7 +5,10 @@ import { activities, events } from "../config/mongoCollections.js";
 const searchActivity = async (query) => {
     const activityCollection = await activities();
     const regex = new RegExp(query, 'i'); 
-    const activitiesList = await activityCollection.find({ activities: regex }).toArray();
+    const activitiesList = await activityCollection.find({ activityName: regex }).toArray();
+    if (activitiesList.length === 0) throw new Error('Activity not found');
+    if (!activitiesList) throw new Error('Activity not found');
+
     return activitiesList;
 }
 

@@ -13,29 +13,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Log the search parameters to ensure they're correctly formatted
-        console.log(searchParams.toString());
+        // console.log(searchParams.toString());
 
         // Make AJAX request
-        fetch(`/allActivities/search?${searchParams.toString()}`, {
-            method: 'GET', // GET request
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => {
-            // Handle response
-            if (response.ok) {
-                window.location.href = '/allActivities/search';
-            } else {
-                console.error('Failed to search activities.');
-                window.location.href = '/error';
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+        // fetch(`/allActivities/search?${searchParams.toString()}`, {
+        //     method: 'GET', // GET request
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // })
+        // .then(response => {
+        //     // Handle response
+        //     if (response.ok) {
+                window.location.href = `/allActivities/search?${searchParams.toString()}`;
+    //         } else {
+    //             console.error('Failed to search activities.');
+    //             window.location.href = '/error';
+    //         }
+    //     })
+    //     .catch(error => {
+    //         console.error('Error:', error);
+    //     });
         
-    });
+});
 });
 
 
