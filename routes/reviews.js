@@ -77,7 +77,7 @@ reviewsRouter.delete('/deleteReview/:id', async (req, res) => {
   try {
     const reviewId = req.params.id;
     await removeReview(reviewId);
-    res.render('report');
+    // res.render('report', { reviewId });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -95,7 +95,7 @@ reviewsRouter.put('/reportReview/:id', isAuthenticated, async (req, res) => {
     if (result.modifiedCount === 0) {
       res.render('error', { errorMessage: "Unable to find review." });
     } else {
-      res.status(200).json({ message: 'Review reported successfully' });
+      res.render('report', { reviewId });
     }
   } catch (error) {
 
