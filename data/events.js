@@ -11,6 +11,7 @@ const createEvent = async (eventData) => {
         eventName: eventData.eventName,
         eventAddress: eventData.eventAddress,
         eventDescription: eventData.eventDescription,
+        eventDate: eventData.eventDate,
         time: eventData.time,
         eventContact: eventData.eventContact,
         eventType: eventData.eventType,
@@ -24,7 +25,7 @@ const createEvent = async (eventData) => {
     if (insertInfo.insertedCount === 0) throw new Error("Could not add event.");
 
     if (!newEvent.eventName || !newEvent.eventAddress || !newEvent.eventDescription || !newEvent.time || !newEvent.eventContact || !newEvent.eventType || !newEvent.eventAccommodations || !newEvent.eventPriceRange
-        || !newEvent.participants) throw new Error("All fields must have input.");
+        || !newEvent.participants || !newEvent.eventDate) throw new Error("All fields must have input.");
 
     return newEvent;
 };

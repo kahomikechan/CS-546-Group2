@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ event.title }}</title>
+    <title>{{ event.eventName }}</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>{{ event.title }}</h1>
-    <p>Date: {{ event.date }}</p>
-    <p>Category: {{ event.category }}</p>
-    <p>Description: {{ event.description }}</p>
+    <h1>{{ event.eventName }}</h1>
+    <p>Address: {{ event.eventAddress }}</p>
+    <p>Date: {{ event.eventDate }}</p>
+    <p>Time: {{ event.time }}</p>
+    <p>Category: {{ event.eventType }}</p>
+    <p>Description: {{ event.eventDescription }}</p>
+    <p>Contact: {{ event.eventContact }}</p>
+    <p>Accommodations: {{ event.eventAccommodations }}</p>
+    <p>Price Range: {{ event.eventPriceRange }}</p>
 
     <!-- Additional details as needed -->
 
+    <form id = eventForm></form>
+    <p><a href="/rsvp" class="link link-size">RSVP</a></p>
     <p><a href="/allEvents" class="link link-size">Back to Events List</a></p>
-    <script src="/routes/events.js"></script>
+    <script src="/public/js/eventValidation.js"></script>
 </body>
 </html>

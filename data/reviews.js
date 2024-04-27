@@ -1,7 +1,6 @@
 
 import { reviews } from "../config/mongoCollections.js";
 import { ObjectId } from 'mongodb';
-
 const createReview = async (
     rating,
     reviewText,
@@ -57,9 +56,11 @@ const reviewsCollection = await reviews();
         rating,
         reviewText
     });
+  
 
 return newReview;
 };
+
 
 const getAllReviews = async () => {
     const reviewsCollection = await reviews();

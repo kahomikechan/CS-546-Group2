@@ -35,11 +35,19 @@ const createUser = async (
     throw new Error('Password must be at least 8 characters long and contain at least one uppercase letter, one number, and one special character.');
   }
  
-  const usersCollection = await users();
-  const existingUser = await usersCollection.findOne({ email: email.toLowerCase() });
-    if (existingUser) {
-        throw new Error('A user with this email address already exists.');
-    }
+ const usersCollection = await users();
+ 
+  // Check if user with the provided email already exists
+  const existingUserWithEmail = await usersCollection.findOne({ emailAddress: email.toLowerCase() });
+  if (existingUserWithEmail) {
+    throw new Error('A user with this email address already exists.');
+  }
+
+  // Check if user with the provided username already exists
+  const existingUserWithUsername = await usersCollection.findOne({ userName: username });
+  if (existingUserWithUsername) {
+    throw new Error('A user with this username already exists.');
+  }
 
     const reviews = []
   
@@ -257,5 +265,7 @@ const getUnapprovedUsers = async () => {
   };
 
   export { createUser, getAllUsers, getUser, removeUser, updateProfile, approveProfile, loginUser, getUnapprovedUsers }
+
+
 
 

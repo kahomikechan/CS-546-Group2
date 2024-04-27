@@ -14,6 +14,7 @@
         <input type="text" id="searchInput" name="searchInput">
         <button type="submit">Search</button>
     </form>
+    <p><a href="/" class="link link-size">Home</a></p>
 
     <h2>Sort/Filter Options:</h2>
     <form id="sortFilterForm">
@@ -40,19 +41,21 @@
 
         <button type="submit">Apply</button>
     </form>
+    <form id = eventForm></form>
 
     <div id="eventsList">
   {{#each allEvents}}
   <div class="event">
     <h3>{{this.eventName}}</h3>
-    <p>Date: {{this.time}}</p>
+    <p>Date: {{this.eventDate}}</p>
+    <p>Time: {{ this.time }}</p>
     <p>Category: {{this.eventType}}</p>
     <p>Description: {{this.eventDescription}}</p>
     <a href="/event/{{this._id}}">View Details</a>
   </div>
   {{/each}}
     </div>
-    <p><a href="/" class="link link-size">Click here to go back to the home page</a></p>
+    {{!-- <p><a href="/" class="link link-size">Home</a></p> --}}
     <script src="/public/js/eventValidation.js"></script>
 </body>
 </html>

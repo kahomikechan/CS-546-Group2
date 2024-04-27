@@ -92,4 +92,21 @@ eventsRouter.delete('/deleteEvent/:id', async (req, res) => {
   }
 });
 
+eventsRouter.get('/rsvp', isAuthenticated, async (req, res) => {
+  try {
+    res.render('rsvp');
+  } catch (error) {
+    res.render('error', { errorMessage: "Unable to load the RSVP page." });
+  }
+});
+
+eventsRouter.post('/rsvp', isAuthenticated, async (req, res) => {
+  try {
+    const rsvpData = req.body; 
+    res.render('rsvp', { rsvpData });
+  } catch (error) {
+    res.render('error', { errorMessage: "Unable to create an event." });
+  }
+});
+
 export default eventsRouter;
