@@ -77,7 +77,7 @@ reviewsRouter.delete('/deleteReview/:id', async (req, res) => {
   try {
     const reviewId = req.params.id;
     await removeReview(reviewId);
-    res.json({ message: 'Review deleted successfully' });
+    res.render('report');
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
