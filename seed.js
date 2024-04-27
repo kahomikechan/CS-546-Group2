@@ -87,13 +87,15 @@ const reviews = [
     rating: 4.5,
     reviewText: "Great park for the kids!",
     reviewerId: new ObjectId(), // Insert the ObjectId of the user who left the review
-    activityId: new ObjectId() // Insert the ObjectId of the activity being reviewed
+    activityId: new ObjectId(), // Insert the ObjectId of the activity being reviewed
+    reported: false
   },
   {
     rating: 4.8,
     reviewText: "Nice area for walks. The whole family had a great time",
     reviewerId: new ObjectId(),
-    activityId: new ObjectId() 
+    activityId: new ObjectId(),
+    reported: true
   },
 ];
 

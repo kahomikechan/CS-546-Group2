@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities List Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Activities List Page</h1>
+
+    <form id="searchForm">
+        <label for="searchInput">Search for activities:</label>
+        <input type="text" id="searchInput" name="searchInput">
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Sort/Filter Options:</h2>
+    <form id="sortFilterForm">
+            <label for="sortByPrice">Sort by Price:</label>
+    <select id="sortByPrice" name="sortByPrice">
+        <option value="asc">Low to High</option>
+        <option value="desc">High to Low</option>
+    </select>
+    
+    <label for="sortByRating">Sort by Rating:</label>
+    <select id="sortByRating" name="sortByRating">
+        <option value="asc">Low to High</option>
+        <option value="desc">High to Low</option>
+    </select>
+    
+    <label for="filterAccommodations">Filter by Accommodations:</label>
+    <select id="filterAccommodations" name="filterAccommodations">
+        <option value="all">All</option>
+        <option value="hotel">Hotel</option>
+        <option value="apartment">Apartment</option>
+        <option value="villa">Villa</option>
+    </select>
+
+        {{!-- <label for="sortByCreator">Sort by Event Creator:</label>
+        <select id="sortByCreator" name="sortByCreator">
+            <!-- options for event creators go here -->
+        </select> --}}
+
+        <label for="filterByCategory">Filter by Event Category:</label>
+        <select id="filterByCategory" name="filterByCategory">
+             <option value="Playdate">Playdate</option>
+            <option value="Workshop">Workshop</option>
+            <option value="Seminar">Seminar</option>
+            <option value="Concert">Concert</option>
+            <option value="Party">Party</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <button type="submit">Apply</button>
+    </form>
+
+    <div id="activitiesList">
+  {{#each allActivities}}
+  <div class="activity">
+    <h3>{{this.activityName}}</h3>
+    <p>Hours: {{this.activityHours}}</p>
+    <p>Category: {{this.activityType}}</p>
+    <p>Description: {{this.activityDescription}}</p>
+    <a href="/activity/{{this._id}}">View Details</a>
+  </div>
+  {{/each}}
+    </div>
+    <p><a href="/" class="link link-size">Click here to go back to the home page</a></p>
+    <script src="/routes/activities.js"></script>
+</body>
+</html>

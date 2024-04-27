@@ -112,7 +112,7 @@ reviewsRouter.get('/reportedReviews', isAdmin, async (req, res) => {
     res.render('reportedReviews', { reportedReviews });
   }
   catch {
-    console.error('Error retrieving reported reviews:', error);
+    res.render('error', { errorMessage: "Unable to load reported reviews." });
     res.render('error', { errorMessage: 'Failed to retrieve reported reviews' });
   }
 });

@@ -20,6 +20,18 @@ const isAuthenticated = (req, res, next) => {
   }
 };
 
+// Route to render the map
+activitiesRouter.get('/map', isAuthenticated, async (req, res) => {
+  try {
+    const dataForMap = {
+
+    };    
+    res.render('map', { dataForMap });
+  } catch (error) {
+    res.render('error', { errorMessage: "Failed to load the map." });
+  }
+});
+
 //create activity - only admin
 activitiesRouter.post('/createActivity', isAdmin, async (req, res) => {
   try {
@@ -35,7 +47,7 @@ activitiesRouter.post('/createActivity', isAdmin, async (req, res) => {
 activitiesRouter.get('/allActivities', isAuthenticated, async (req, res) => {
   try {
     const allActivities = await getAllActivities();
-    res.render('activities', { allActivities });
+    res.render('activitylistpage', { allActivities });
   } catch (error) {
     res.render('error', { errorMessage: "Check back later!" });
   }
@@ -49,7 +61,7 @@ activitiesRouter.get('/activity/:id', isAuthenticated, async (req, res) => {
     if (!activity) {
       res.render('error', { errorMessage: "Please enter an activity ID." });
     } else {
-      res.render('activitityDetail', { activity });
+      res.render('activities', { activity });
     }
   } catch (error) {
     res.render('error', { errorMessage: "That activity does not exist." });

@@ -1,50 +1,27 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Parks in Hoboken</title>
-    
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="/public/css/styles.css">
-    
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ activity.activityName }}</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h2 class="h1">Activities in Hoboken</h2>
-<div class="container"> 
-    <div id="map"></div> 
-    <div class="sidebar" id="sidebar"> 
-        
-        <label for="priceFilter">Filter by maximum price:</label>
-        <select id="priceFilter">
-            <option value="100">Show All</option>
-            <option value="30">$30 or less</option>
-            <option value="20">$20 or less</option>
-            <option value="10">$10 or less</option>
-            <option value="0">Free</option>
-        </select>
-        
-        <label for="ratingFilter">Filter by maximum rating:</label>
-        <select id="ratingFilter">
-            <option value="5">5</option>
-            <option value="4">4 or less</option>
-            <option value="3">3 or less</option>
-            <option value="2">2 or less</option>
-            <option value="1">1 or less</option>
-        </select>
-                <div class="activity">
-                <form id="reviewForm"></form>
-              <p><a href="/createReview" class="link link-size">Submit a review</a></p>
+    <h1>{{ activity.activityName }}</h1>
+    <p>Address: {{ activity.activityAddress }}</p>
+    <p>Hours: {{ activity.activityHours }}</p>
+    <p>Category: {{ activity.activityType }}</p>
+    <p>rating: {{ activity.rating }}</p>
+    <p>Accommodations: {{ activity.activityAccommodations }}</p>
+    <p>Price Range: {{ activity.activityPriceRange }}</p>
+    <p>Reviews: {{ activity.reviews }}</p>
+    <p>Link: <a href={{activity.activityLink}}>Click Here</a></p>
+    <p>Description: {{ activity.activityDescription }}</p>    
 
-        <div id="parkList"> 
-           
-        </div>
-    </div>
-</div>
-<a href="/home" class="link">Home</a>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.2/purify.min.js"></script>
-<script src="/public/js/activityValidation.js"></script>
-<script src="/public/js/reviewValidation.js"></script>
+    <!-- Additional details as needed -->
+
+    <p><a href="/allActivities" class="link link-size">Back to Activities List</a></p>
+    <script src="/routes/activities.js"></script>
 </body>
 </html>
