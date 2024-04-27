@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activities List Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/public/css/styles.css">
 </head>
 <body>
     <h1>Activities List Page</h1>
@@ -67,7 +67,10 @@
   </div>
   {{/each}}
     </div>
+     {{!-- <div id="searchResultsContainer"></div> --}}
     <p><a href="/" class="link link-size">Click here to go back to the home page</a></p>
-    <script src="/routes/activities.js"></script>
+    <script src="/public/js/activityValidation.js"></script>
+    <script src="/public/js/searchResults.js"></script>
+    {{!-- <script src="/routes/activities.js"></script> --}}
 </body>
 </html>

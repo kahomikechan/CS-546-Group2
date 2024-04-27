@@ -1,6 +1,6 @@
 // functions to search everythign up 
 import { query } from "express";
-import { activities, events, reviews } from "../config/mongoCollections.js";
+import { activities, events } from "../config/mongoCollections.js";
 
 const searchActivity = async (query) => {
     const activityCollection = await activities();
@@ -16,11 +16,4 @@ const searchEvent = async (query) =>  {
     return eventList;
 }
 
-const searchReview = async (query) => {
-    const reviewCollection = await reviews();
-    const regex = new RegExp(query, 'i');
-    const reviewList = await reviewCollection.find({ reviews: regex }).toArray();
-    return reviewList;
-}
-
-export { searchActivity, searchEvent, searchReview }
+export { searchActivity, searchEvent }

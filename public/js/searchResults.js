@@ -1,44 +1,42 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        // Fetch search results from the server
-        const response = await fetch('/search');
-        if (!response.ok) {
-            throw new Error('Failed to fetch search results');
-        }
-        const searchResults = await response.json();
+document.addEventListener('DOMContentLoaded', function() {
+    const searchForm = document.getElementById('searchForm');
 
-        // Get references to lists
-        const activitiesList = document.getElementById('activitiesList');
-        const eventsList = document.getElementById('eventsList');
-        const reviewsList = document.getElementById('reviewsList');
+    searchForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+       
+        const formData = new FormData(this);
 
-        // Create list item function
-        const createListItem = (item) => {
-            const li = document.createElement('li');
-            li.textContent = item.name; // Adjust property name as per your data structure
-            return li;
-        };
-
-        // Display activities
-        searchResults.activities.forEach(activity => {
-            const li = createListItem(activity);
-            activitiesList.appendChild(li);
+        // Convert FormData to URLSearchParams
+        const searchParams = new URLSearchParams();
+        formData.forEach(function(value, key){
+            searchParams.append(key, value);
         });
 
-        // Display events
-        searchResults.events.forEach(event => {
-            const li = createListItem(event);
-            eventsList.appendChild(li);
-        });
+        // Log the search parameters to ensure they're correctly formatted
+        console.log(searchParams.toString());
 
-        // Display reviews
-        searchResults.reviews.forEach(review => {
-            const li = createListItem(review);
-            reviewsList.appendChild(li);
+        // Make AJAX request
+        fetch(`/allActivities/search?${searchParams.toString()}`, {
+            method: 'GET', // GET request
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            // Handle response
+            if (response.ok) {
+                window.location.href = '/allActivities/search';
+            } else {
+                console.error('Failed to search activities.');
+                window.location.href = '/error';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
-    } catch (error) {
-        console.error('Error:', error);
-        // Handle error
-    }
+        
+    });
 });
+
+
 
