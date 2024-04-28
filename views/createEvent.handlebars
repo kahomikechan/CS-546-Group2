@@ -13,25 +13,25 @@
 </head>
 <body>
     <h1>Create Event</h1>
-    <form id="eventForm" action="/createEvent" method="POST">
+<form id="eventForm" class="center-form" action="/createEvent" method="POST">
 
         <label for="eventName">Event Name:</label><br>
-        <input type="text" id="eventName" name="eventName" required><br><br>
+        <input type="text" id="eventName" name="eventName" class="input-field" required><br><br>
 
         <label for="eventAddress">Event Address:</label><br>
-        <input type="text" id="eventAddress" name="eventAddress" required><br><br>
+        <input type="text" id="eventAddress" name="eventAddress" class="input-field" required><br><br>
 
         <label for="eventDescription">Event Description:</label><br>
-        <textarea id="eventDescription" name="eventDescription" rows="4" cols="50" required></textarea><br><br>
+        <textarea id="eventDescription" name="eventDescription" rows="4" cols="50" class="input-field" required></textarea><br><br>
 
         <label for="time">Time:</label><br>
-        <input type="datetime-local" id="time" name="time" required><br><br>
+        <input type="datetime-local" id="time" name="time" class="input-field" required><br><br>
 
         <label for="eventContact">Event Contact:</label><br>
-        <input type="text" id="eventContact" name="eventContact" required><br><br>
+        <input type="text" id="eventContact" name="eventContact" class="input-field" required><br><br>
 
         <label for="eventType">Event Type:</label><br>
-        <select id="eventType" name="eventType" required>
+        <select id="eventType" name="eventType" class="input-field" required>
             <option value="Playdate">Playdate</option>
             <option value="Workshop">Workshop</option>
             <option value="Seminar">Seminar</option>
@@ -41,13 +41,16 @@
         </select><br><br>
 
         <label for="eventAccommodations">Event Accommodations:</label><br>
-        <textarea id="eventAccommodations" name="eventAccommodations" rows="4" cols="50"></textarea><br><br>
+        <textarea id="eventAccommodations" name="eventAccommodations" rows="4" cols="50" class="input-field"></textarea><br><br>
 
         <label for="eventPriceRange">Event Price Range:</label><br>
-        <input type="text" id="eventPriceRange" name="eventPriceRange"><br><br>
+        <input type="text" id="eventPriceRange" name="eventPriceRange" class="input-field"><br><br>
 
-        <input type="submit" value="Create Event">
+        <input type="submit" value="Create Event" class="create-event-button link-size">
     </form>
+    <div class="back-link">
+    <p><a href="/" class="link link-size">Home</a></p>
+    </div>
     <script src="/public/js/eventValidation.js"></script>
 </body>
 </html>

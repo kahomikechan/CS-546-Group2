@@ -6,7 +6,7 @@
     <title>{{ event.eventName }}</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="activity-page">
     <h1>{{ event.eventName }}</h1>
     <p>Address: {{ event.eventAddress }}</p>
     <p>Date: {{ event.eventDate }}</p>
@@ -20,8 +20,10 @@
     <!-- Additional details as needed -->
 
     <form id = eventForm></form>
+    <div class="back-link">
     <p><a href="/rsvp" class="link link-size">RSVP</a></p>
     <p><a href="/allEvents" class="link link-size">Back to Events List</a></p>
+    </div>
     <script src="/public/js/eventValidation.js"></script>
 </body>
 </html>

@@ -11,17 +11,20 @@
     <h1>Search Results</h1>
     <div id="activitiesList">
   {{#each searchResults}}
-  <div class="activity">
+  <div class="event">
     <h3>{{this.activityName}}</h3>
     <p>Hours: {{this.activityHours}}</p>
     <p>Category: {{this.activityType}}</p>
     <p>Description: {{this.activityDescription}}</p>
-    <a href="/activity/{{this._id}}">View Details</a>
-    <a href="/createReview">Leave A Review</a>
+    <a href="/activity/{{this._id}}" class="custom-link">View Details</a>
+    <a href="/createReview" class="custom-link">Leave A Review</a>
   </div>
   {{/each}}
   </div>
-    </ul>
+    <div class="back-link">
+    <p><a href="/" class="link link-size">Home</a></p>
+    <p><a href="/allActivities" class="link link-size">Back</a></p>
+    </div>
     <script src="/public/js/searchResults.js"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@ const isAdmin = (req, res, next) => {
   if (req.session.user && req.session.user.role === 'admin') {
     next();
   } else {
-    res.status(403).json({ error: 'Access forbidden' });
+    res.render('error', { errorMessage: "Access forbidden." });
   }
 };
 
@@ -46,7 +46,7 @@ reviewsRouter.get('/allReviews', async (req, res) => {
 });
 
 // Get review
-reviewsRouter.get('/review/:id', async (req, res) => {
+reviewsRouter.get('/review/:id', isAuthenticated, async (req, res) => {
   try {
     const reviewId = req.params.id;
     const review = await getReview(reviewId);
@@ -57,18 +57,6 @@ reviewsRouter.get('/review/:id', async (req, res) => {
     }
   } catch (error) {
     res.render('error', { errorMessage: "Unable to find review." });
-  }
-});
-
-// Update review - user should be able to do this
-reviewsRouter.put('/updateReview/:id', async (req, res) => {
-  try {
-    const reviewId = req.params.id;
-    const updatedReview = req.body; // Assuming request body contains updated review data
-    await updateReview(reviewId, updatedReview);
-    res.json({ message: 'Review updated successfully' });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
   }
 });
 
