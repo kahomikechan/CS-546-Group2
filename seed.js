@@ -14,7 +14,7 @@ const users = [
     password: await bcrypt.hash("Password123!", 10),
     isAdminApproved: "true",
     reviews: [],
-    role: "user"
+    role: "admin"
   },
   {
     firstName: "Jane",
@@ -36,7 +36,7 @@ const activities = [
     activityType: "Park",
     rating: [],
     activityAccommodations: "Family Bathrooms",
-    activityPriceRange: "$",
+    activityPriceRange: "0",
     reviews: [], 
     activityLink: "https://www.hobokennj.gov/location/maxwell-place-park",
     activityDescription: "Compact green space on the Hudson River with a waterfront walkway & beach area, plus a playground."
@@ -47,11 +47,47 @@ const activities = [
     activityHours: "24hours",
     activityType: "Park",
     rating: [],
-    activityAccommodations: "Family Bathrooms, Wheelchair accessible",
-    activityPriceRange: "$",
+    activityAccommodations: "Family Bathrooms, Stroller accessible",
+    activityPriceRange: "0",
     reviews: [], 
     activityLink: "http://hobokennj.gov/",
     activityDescription: "Small, shady neighborhood spot with basketball court, playground & dog-friendly paths."
+  },
+    {
+    activityName: "Church Square Park Playground",
+    activityAddress: "211 4th St, Hoboken, NJ 07030",
+    activityHours: "6am - 10pm",
+    activityType: "Playground",
+    rating: [],
+    activityAccommodations: "Family Bathrooms",
+    activityPriceRange: "0",
+    reviews: [], 
+    activityLink: "https://www.hobokennj.gov/location/church-square-park",
+    activityDescription: "Modern playground located in Church Square Park"
+  },
+    {
+    activityName: "Il Tavolo di Palmisano",
+    activityAddress: "700 Clinton St, Hoboken, NJ 07030",
+    activityHours: "4 - 10pm",
+    activityType: "Restaurant",
+    rating: [],
+    activityAccommodations: "Stroller Accessible",
+    activityPriceRange: "40",
+    reviews: [], 
+    activityLink: "https://iltavolohoboken.com/",
+    activityDescription: "Italian meals, cocktails & weekend brunch in a rustic-chic, brick-lined dining room with a patio."
+  },
+    {
+    activityName: "Hoboken Clique",
+    activityAddress: "1204 Washington St, Hoboken, NJ 07030",
+    activityHours: "10am - 6pm",
+    activityType: "Store",
+    rating: [],
+    activityAccommodations: "Family Bathrooms, Stroller Accessible",
+    activityPriceRange: "30",
+    reviews: [], 
+    activityLink: "https://hobokenclique.com/",
+    activityDescription: "Unisex baby through tween clothing, accessories and gift shop offering customization of a variety of items."
   },
 ];
 
@@ -65,7 +101,7 @@ const events = [
     eventContact: "carnival@example.com",
     eventType: "Fair",
     eventAccommodations: "Family Bathrooms",
-    eventPriceRange: "$$$",
+    eventPriceRange: "40",
     participants: [] 
   },
   {
@@ -77,7 +113,7 @@ const events = [
     eventContact: "playdate@example.com",
     eventType: "Playdate",
     eventAccommodations: "Family Bathrooms",
-    eventPriceRange: "$",
+    eventPriceRange: "0",
     participants: [] 
   },
 ];
