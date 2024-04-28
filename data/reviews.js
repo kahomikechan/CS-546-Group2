@@ -156,14 +156,14 @@ const updateReview = async (
 
 };
 
-const reportReview = async (reviewId) => {
-  const reviewsCollection = await reviews();
-  await reviewsCollection.updateOne(
-    { _id: new ObjectId(reviewId) },
-    { $set: { reported: true } }
-  );
+// const reportReview = async (reviewId) => {
+//   const reviewsCollection = await reviews();
+//   await reviewsCollection.updateOne(
+//     { _id: new ObjectId(reviewId) },
+//     { $set: { reported: true } }
+//   );
 
-  return `Review with ID ${reviewId} has been reported.`;
-};
+//   return `Review with ID ${reviewId} has been reported.`;
+// };
 
-export { createReview, getAllReviews, removeReview, updateReview, getReview, reportReview }
+export { createReview, getAllReviews, removeReview, updateReview, getReview }

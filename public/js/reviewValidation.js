@@ -42,30 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-//             try {
-//                 const response = await fetch('/createReview', {
-//                     method: 'POST',
-//                     headers: { 'Content-Type': 'application/json' },
-//                     body: JSON.stringify(reviewData)
-//                 });
-
-//                 if (response.ok) {
-//                     // Redirect to allReviews page if review is successfully created
-//                     window.location.href = '/allReviews';
-//                 } else {
-//                     console.error('Failed to submit review.');
-//                     // Handle error condition if necessary
-//                 }
-//             } catch (error) {
-//                 console.error('Error:', error);
-//                 // Handle error condition if necessary
-//             }
-//         });
-//         console.error('Review form element not found.');
-//         // Handle error condition if necessary
-// });
-
 async function updateAllReviews() {
     try {
         const response = await fetch('/allReviews');
