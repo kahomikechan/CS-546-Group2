@@ -8,20 +8,25 @@ searchRouter.get('/allActivities/search', async (req, res) => {
     try {
         const query = req.query.searchInput;
         const activitiesResults = await searchActivity(query);
-        // const eventsResults = await searchEvent(query);
-        // const reviewsResults = await searchReview(query);
 
-        // const searchResults = {
-        //     activities: activitiesResults,
-        //     // events: eventsResults,
-        //     // reviews: reviewsResults
-        // };
-    
         res.render('searchResults', { searchResults: activitiesResults });
     } catch (error) {
         res.render('error', { errorMessage: "There are no items that match your search." });
     }
 });
+
+searchRouter.get('/allEvents/search', async (req, res) => {
+    try {
+        
+        const query = req.query.searchInput;
+        const eventsResults = await searchEvent(query);
+
+        res.render('eventSearchResults', {searchResults: eventsResults});
+    }
+    catch (error) {
+        res.render('error', { errorMessage: "There are no items that match your search." });
+    }
+})
 
 export default searchRouter;
 

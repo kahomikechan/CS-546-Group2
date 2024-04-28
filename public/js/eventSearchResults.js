@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const searchForm = document.getElementById('searchForm');
+    const searchForm = document.getElementById('eventSearchForm');
 
     searchForm.addEventListener('submit', function(event) {
         event.preventDefault();
-       
         const formData = new FormData(this);
 
         const searchParams = new URLSearchParams();
@@ -11,11 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             searchParams.append(key, value);
         });
 
-         window.location.href = `/allActivities/search?${searchParams.toString()}`;
-       //  window.location.href = `/allEvents/search?${searchParams.toString()}`;
+         window.location.href = `/allEvents/search?${searchParams.toString()}`;
         
 });
 });
-
-
-

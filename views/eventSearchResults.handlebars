@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+</head>
+<body>
+    <div id="eventSearchForm"></div>
+    <h1>Search Results</h1>
+    <div id="eventsList">
+  {{#each searchResults}}
+  <div class="event">
+    <h3>{{this.eventName}}</h3>
+    <p>Date: {{this.eventDate}}</p>
+    <p>Time: {{ this.time }}</p>
+    <p>Category: {{this.eventType}}</p>
+    <p>Description: {{this.eventDescription}}</p>
+    <a href="/event/{{this._id}}">View Details</a>
+  </div>
+  {{/each}}
+  </div>
+    </ul>
+    <script src="/public/js/eventSearchResults.js"></script>
+</body>
+</html>

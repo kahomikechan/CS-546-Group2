@@ -1,5 +1,4 @@
 // functions to search everythign up 
-import { query } from "express";
 import { activities, events } from "../config/mongoCollections.js";
 
 const searchActivity = async (query) => {
@@ -15,8 +14,12 @@ const searchActivity = async (query) => {
 const searchEvent = async (query) =>  {
     const eventCollection = await events();
     const regex = new RegExp(query, 'i');
-    const eventList = await eventCollection.find({ events: regex }).toArray();
-    return eventList;
+    const eventsList = await eventCollection.find({ eventName: regex }).toArray();
+    if (eventsList.length === 0) throw new Error('Event not found')
+    if (!eventsList) throw new Error('Event not found')
+    
+    return eventsList;
+
 }
 
 export { searchActivity, searchEvent }
