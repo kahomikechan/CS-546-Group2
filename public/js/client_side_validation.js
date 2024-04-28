@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function displayError(message) {
         
-        const errorDiv = document.getElementById('error-message');
+        const errorDiv = document.getElementById("error-message");
         errorDiv.textContent = message;
         errorDiv.style.display = 'block';
     }
