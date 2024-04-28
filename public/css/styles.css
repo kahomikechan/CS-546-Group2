@@ -81,14 +81,13 @@
 
 
 .button {
-    background-color: #4CAF50;
+    background-color: #407088;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
-
 
 .error-message {
     color: red;
@@ -155,6 +154,7 @@
 
 .event{
     border: 1px solid #132743;
+    background-color: #1327432b;
     padding: 15px;
     box-shadow: #e3e3e3;
     color:#132743;
@@ -176,6 +176,7 @@
       padding: 0;
       overflow: hidden;
       width: 100.7%;
+      display: flex;
   }
   
   .nav-links li {
@@ -205,7 +206,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    background-color: #fbd1d1;
+    background-color: #f8e4e4;
 }
 
 .nav-links li a:hover {
@@ -234,12 +235,12 @@ html, body {
     text-decoration: underline;
 }
 
-body {
+/* body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #f8e4e4;
-}
+} */
 
 .container {
     max-width: 800px;

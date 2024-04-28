@@ -9,12 +9,11 @@
 <body>
     <h1>Events List Page</h1>
 
-    <form id="searchForm">
-        <label for="searchInput">Search for upcoming events:</label>
-        <input type="text" id="searchInput" name="searchInput">
-        <button type="submit">Search</button>
+    <form id="searchForm" class="search-form">
+        <label for="searchInput" class="search-label"></label>
+        <input type="text" id="searchInput" name="searchInput" class="search-input" placeholder="Search for events...">
+        <button type="submit" class="search-button">Search</button>
     </form>
-    <p><a href="/" class="link link-size">Home</a></p>
 
     <h2>Sort/Filter Options:</h2>
     <form id="sortFilterForm">
@@ -51,9 +50,12 @@
     <p>Time: {{ this.time }}</p>
     <p>Category: {{this.eventType}}</p>
     <p>Description: {{this.eventDescription}}</p>
-    <a href="/event/{{this._id}}">View Details</a>
+    <a href="/event/{{this._id}}" class="custom-link">View Details</a>
   </div>
   {{/each}}
+    </div>
+         <div class="back-link">
+    <p><a href="/" class="link link-size">Home</a></p>
     </div>
     {{!-- <p><a href="/" class="link link-size">Home</a></p> --}}
     <script src="/public/js/eventValidation.js"></script>

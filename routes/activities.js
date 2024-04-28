@@ -94,4 +94,14 @@ activitiesRouter.delete('/deleteActivity/:id', isAdmin, async (req, res) => {
   }
 });
 
+activitiesRouter.get('/randomActivity', async (req, res) => {
+  try {
+      const allActivities = await getAllActivities();
+      const randomActivity = allActivities[Math.floor(Math.random() * allActivities.length)];
+      res.redirect(`/activity/${randomActivity._id}`);
+  } catch (error) {
+      res.render('error', { errorMessage: "Failed to fetch random activity." });
+  }
+});
+
 export default activitiesRouter;
