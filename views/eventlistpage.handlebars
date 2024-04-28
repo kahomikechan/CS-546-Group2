@@ -9,7 +9,7 @@
 <body>
     <h1>Events List Page</h1>
 
-    <form id="searchForm" class="search-form">
+    <form id="eventSearchForm" class="search-form">
         <label for="searchInput" class="search-label"></label>
         <input type="text" id="searchInput" name="searchInput" class="search-input" placeholder="Search for events...">
         <button type="submit" class="search-button">Search</button>
@@ -23,14 +23,10 @@
             <option value="desc">Descending</option>
         </select>
 
-        {{!-- <label for="sortByCreator">Sort by Event Creator:</label>
-        <select id="sortByCreator" name="sortByCreator">
-            <!-- options for event creators go here -->
-        </select> --}}
-
         <label for="filterByCategory">Filter by Event Category:</label>
         <select id="filterByCategory" name="filterByCategory">
-             <option value="Playdate">Playdate</option>
+            <option value="">All</option>
+            <option value="Playdate">Playdate</option>
             <option value="Workshop">Workshop</option>
             <option value="Seminar">Seminar</option>
             <option value="Concert">Concert</option>
@@ -38,26 +34,28 @@
             <option value="Other">Other</option>
         </select>
 
-        <button type="submit">Apply</button>
+        <button type="button" onclick="applyFilters()">Apply</button>
     </form>
-    <form id = eventForm></form>
 
     <div id="eventsList">
-  {{#each allEvents}}
-  <div class="event">
-    <h3>{{this.eventName}}</h3>
-    <p>Date: {{this.eventDate}}</p>
-    <p>Time: {{ this.time }}</p>
-    <p>Category: {{this.eventType}}</p>
-    <p>Description: {{this.eventDescription}}</p>
-    <a href="/event/{{this._id}}" class="custom-link">View Details</a>
-  </div>
-  {{/each}}
+        {{#each allEvents}}
+            <div class="event">
+                <h3>{{this.eventName}}</h3>
+                <p>Date: {{this.eventDate}}</p>
+                <p>Time: {{ this.time }}</p>
+                <p>Category: {{this.eventType}}</p>
+                <p>Description: {{this.eventDescription}}</p>
+                <a href="/event/{{this._id}}" class="custom-link">View Details</a>
+            </div>
+        {{/each}}
     </div>
-         <div class="back-link">
-    <p><a href="/" class="link link-size">Home</a></p>
+
+    <div class="back-link">
+        <p><a href="/" class="link link-size">Home</a></p>
     </div>
-    {{!-- <p><a href="/" class="link link-size">Home</a></p> --}}
+
     <script src="/public/js/eventValidation.js"></script>
+    <script src="/public/js/eventSearchResults.js"></script>
+
 </body>
 </html>
