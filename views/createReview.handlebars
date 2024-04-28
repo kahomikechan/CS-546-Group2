@@ -13,13 +13,13 @@
 </head>
 <body>
     <h1>Create Review</h1>
-    <form id="reviewForm" action="/createReview" method="POST">
+    <form id="reviewForm" class="center-form" action="/createReview" method="POST">
     
     <label for="reviewDescription">Review:</label><br>
-    <textarea id="reviewDescription" name="reviewText" rows="4" cols="50" required></textarea><br><br>
+    <textarea id="reviewDescription" name="reviewText" rows="4" cols="50" class="input-field"required></textarea><br><br>
 
 <label for="filterByRating">Filter by Rating:</label>
-<select id="filterByRating" name="filterByRating" required>
+<select id="filterByRating" name="filterByRating" class="input-field" required>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -27,8 +27,11 @@
     <option value="5">5</option>
 </select>
 
-    <input type="submit" value="Create Review">
+    <input type="submit" class="create-event-button link-size" value="Create Review">
 </form>
+    <div class="back-link">
+    <p><a href="/" class="link link-size">Home</a></p>
+    </div>
     <script src="/public/js/reviewValidation.js"></script>
 </body>
 </html>
