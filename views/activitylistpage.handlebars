@@ -1,83 +1,89 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Activities List Page</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="/public/css/styles.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-
-
-</head>
-<body>
+  </head>
+  <body>
     <h1>Activities List Page</h1>
 
     <form id="searchForm" class="search-form">
-        <label for="searchInput" class="search-label"></label>
-        <input type="text" id="searchInput" name="searchInput" class="search-input" placeholder="Search for activities...">
-        <button type="submit" class="search-button">Search</button>
+      <label for="searchInput" class="search-label"></label>
+      <input
+        type="text"
+        id="searchInput"
+        name="searchInput"
+        class="search-input"
+        placeholder="Search for activities..."
+      />
+      <button type="submit" class="search-button">Search</button>
     </form>
 
     <h2>Sort/Filter Options:</h2>
     <form id="sortFilterForm">
-            <label for="sortByPrice">Sort by Price:</label>
-    <select id="sortByPrice" name="sortByPrice">
+      <label for="sortByPrice">Sort by Price:</label>
+      <select id="sortByPrice" name="sortByPrice">
         <option value="asc">Low to High</option>
         <option value="desc">High to Low</option>
-    </select>
-    
-    <label for="sortByRating">Sort by Rating:</label>
-    <select id="sortByRating" name="sortByRating">
+      </select>
+
+      <label for="sortByRating">Sort by Rating:</label>
+      <select id="sortByRating" name="sortByRating">
         <option value="asc">Low to High</option>
         <option value="desc">High to Low</option>
-    </select>
-    
-    <label for="filterAccommodations">Filter by Accommodations:</label>
-    <select id="filterAccommodations" name="filterAccommodations">
+      </select>
+
+      <label for="filterAccommodations">Filter by Accommodations:</label>
+      <select id="filterAccommodations" name="filterAccommodations">
         <option value="all">All</option>
         <option value="hotel">Hotel</option>
         <option value="apartment">Apartment</option>
         <option value="villa">Villa</option>
-    </select>
+      </select>
 
-        {{!-- <label for="sortByCreator">Sort by Event Creator:</label>
+      {{! <label for="sortByCreator">Sort by Event Creator:</label>
         <select id="sortByCreator" name="sortByCreator">
             <!-- options for event creators go here -->
-        </select> --}}
+        </select> }}
 
-        <label for="filterByCategory">Filter by Event Category:</label>
-        <select id="filterByCategory" name="filterByCategory">
-             <option value="Playdate">Playdate</option>
-            <option value="Workshop">Workshop</option>
-            <option value="Seminar">Seminar</option>
-            <option value="Concert">Concert</option>
-            <option value="Party">Party</option>
-            <option value="Other">Other</option>
-        </select>
+      <label for="filterByCategory">Filter by Event Category:</label>
+      <select id="filterByCategory" name="filterByCategory">
+        <option value="Playdate">Playdate</option>
+        <option value="Workshop">Workshop</option>
+        <option value="Seminar">Seminar</option>
+        <option value="Concert">Concert</option>
+        <option value="Party">Party</option>
+        <option value="Other">Other</option>
+      </select>
 
-        <button type="submit">Apply</button>
+      <button type="submit">Apply</button>
     </form>
 
     <div id="activitiesList">
-  {{#each allActivities}}
-  <div class="event">
-    <h3>{{this.activityName}}</h3>
-    <p>Hours: {{this.activityHours}}</p>
-    <p>Category: {{this.activityType}}</p>
-    <p>Description: {{this.activityDescription}}</p>
-    <a href="/activity/{{this._id}}" class="custom-link">View Details</a>
-    <a href="/createReview" class="custom-link">Leave A Review</a>
-  </div>
-  {{/each}}
+      {{#each allActivities}}
+        <div class="event">
+          <h3>{{this.activityName}}</h3>
+          <p>Hours: {{this.activityHours}}</p>
+          <p>Category: {{this.activityType}}</p>
+          <p>Description: {{this.activityDescription}}</p>
+          <a href="/activity/{{this._id}}" class="custom-link">View Details</a>
+          <a
+            href="/activity/{{this._id}}/createReview"
+            class="custom-link"
+          >Leave A Review</a>
+        </div>
+      {{/each}}
     </div>
-     {{!-- <div id="searchResultsContainer"></div> --}}
-     <div class="back-link">
-    <p><a href="/" class="link link-size">Home</a></p>
+    {{! <div id="searchResultsContainer"></div> }}
+    <div class="back-link">
+      <p><a href="/" class="link link-size">Home</a></p>
     </div>
-    {{!-- <script src="/public/js/activityValidation.js"></script> --}}
+    {{! <script src="/public/js/activityValidation.js"></script> }}
     <script src="/public/js/searchResults.js"></script>
-    {{!-- <script src="/routes/activities.js"></script> --}}
-</body>
+    {{! <script src="/routes/activities.js"></script> }}
+  </body>
 </html>

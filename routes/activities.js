@@ -25,7 +25,7 @@ activitiesRouter.get('/map', async (req, res) => {
   try {
     const dataForMap = {
 
-    };    
+    };
     res.render('map', { dataForMap });
   } catch (error) {
     res.render('error', { errorMessage: "Failed to load the map." });
@@ -35,7 +35,7 @@ activitiesRouter.get('/map', async (req, res) => {
 //create activity - only admin
 activitiesRouter.post('/createActivity', isAdmin, async (req, res) => {
   try {
-    const {activityName, activityAddress, activityHours, activityType, rating, activityAccommodations, activityPriceRange, reviews, activityLink, activityDescription} = req.body;
+    const { activityName, activityAddress, activityHours, activityType, rating, activityAccommodations, activityPriceRange, reviews, activityLink, activityDescription } = req.body;
     const newActivity = await createActivity(activityName, activityAddress, activityHours, activityType, rating, activityAccommodations, activityPriceRange, reviews, activityLink, activityDescription);
     res.render('activities', { newActivity });
   } catch (error) {
@@ -68,6 +68,7 @@ activitiesRouter.get('/activity/:id', async (req, res) => {
   }
 });
 
+
 // // update an existing activity - only admin
 // activitiesRouter.put('/updateActivity/:id', isAdmin, async (req, res) => {
 //   try {
@@ -87,7 +88,7 @@ activitiesRouter.delete('/deleteActivity/:id', isAdmin, async (req, res) => {
     await removeActivity(activityId);
 
     const allActivities = await getAllActivities();
-    
+
     res.render('deleteActivity', { allActivities });
   } catch (error) {
     res.render('error', { errorMessage: "Failed to delete activity." });
@@ -96,11 +97,11 @@ activitiesRouter.delete('/deleteActivity/:id', isAdmin, async (req, res) => {
 
 activitiesRouter.get('/randomActivity', async (req, res) => {
   try {
-      const allActivities = await getAllActivities();
-      const randomActivity = allActivities[Math.floor(Math.random() * allActivities.length)];
-      res.redirect(`/activity/${randomActivity._id}`);
+    const allActivities = await getAllActivities();
+    const randomActivity = allActivities[Math.floor(Math.random() * allActivities.length)];
+    res.redirect(`/activity/${randomActivity._id}`);
   } catch (error) {
-      res.render('error', { errorMessage: "Failed to fetch random activity." });
+    res.render('error', { errorMessage: "Failed to fetch random activity." });
   }
 });
 

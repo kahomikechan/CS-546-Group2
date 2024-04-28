@@ -14,9 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
             jsonObject[key] = value;
         });
 
-        // Log the JSON object to ensure it's correctly formatted
-        console.log(jsonObject);
-
         // Convert JSON object to string
         const jsonString = JSON.stringify(jsonObject);
 

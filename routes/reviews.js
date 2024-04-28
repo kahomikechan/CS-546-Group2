@@ -22,18 +22,23 @@ const isAuthenticated = (req, res, next) => {
 };
 
 // Create review
-reviewsRouter.post('/createReview', isAuthenticated, async (req, res) => {
+reviewsRouter.post('/activity/:id/createReview', isAuthenticated, async (req, res) => {
   try {
-    const { rating, reviewText, reviewerId, activityId } = req.body;
+    const { rating, reviewText } = req.body;
+    const activityId = req.params.id;
+    const { userId: reviewerId } = req.session.user;
+
     const newReview = await createReview(rating, reviewText, reviewerId, activityId);
     res.render('allReviews', { allReviews: newReview });
   } catch (error) {
     res.render('error', { errorMessage: "Unable to submit review." });
   }
 });
-reviewsRouter.get('/createReview',isAuthenticated, (req, res) => {
+
+reviewsRouter.get('/activity/:id/createReview', isAuthenticated, (req, res) => {
   res.render('createReview');
 });
+
 
 // Get all reviews
 reviewsRouter.get('/allReviews', async (req, res) => {
@@ -74,7 +79,7 @@ reviewsRouter.delete('/deleteReview/:id', async (req, res) => {
 reviewsRouter.put('/reportReview/:id', isAuthenticated, async (req, res) => {
   try {
     const reviewId = req.params.id;
- 
+
     const reviewsCollection = await reviews();
     const result = await reviewsCollection.updateOne(
       { _id: ObjectId(reviewId) },
@@ -96,7 +101,7 @@ reviewsRouter.get('/reportedReviews', isAdmin, async (req, res) => {
   try {
     const reviewsCollection = await reviews();
     const reportedReviews = await reviewsCollection.find({ reported: true }).toArray();
-    
+
     res.render('reportedReviews', { reportedReviews });
   }
   catch {

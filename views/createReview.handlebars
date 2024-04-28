@@ -1,37 +1,52 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create Review</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="/public/css/styles.css" />
 
-     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-</head>
-<body>
+  </head>
+  <body>
     <h1>Create Review</h1>
-    <form id="reviewForm" class="center-form" action="/createReview" method="POST">
-    
-    <label for="reviewDescription">Review:</label><br>
-    <textarea id="reviewDescription" name="reviewText" rows="4" cols="50" class="input-field"required></textarea><br><br>
+    <form
+      id="reviewForm"
+      class="center-form"
+      action="/createReview"
+      method="POST"
+    >
 
-<label for="filterByRating">Filter by Rating:</label>
-<select id="filterByRating" name="filterByRating" class="input-field" required>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-</select>
+      <label for="reviewText">Review:</label><br />
+      <textarea
+        id="reviewText"
+        name="reviewText"
+        rows="4"
+        cols="50"
+        class="input-field"
+        required
+      ></textarea><br /><br />
 
-    <input type="submit" class="create-event-button link-size" value="Create Review">
-</form>
+      <label for="rating">Filter by Rating:</label>
+      <select id="rating" name="rating" class="input-field" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+      <input
+        type="submit"
+        class="create-event-button link-size"
+        value="Create Review"
+      />
+    </form>
     <div class="back-link">
-    <p><a href="/" class="link link-size">Home</a></p>
+      <p><a href="/" class="link link-size">Home</a></p>
     </div>
     <script src="/public/js/reviewValidation.js"></script>
-</body>
+  </body>
 </html>
