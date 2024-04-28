@@ -7,12 +7,12 @@
     <title>{{ activity.activityName }}</title>
     <link rel="stylesheet" href="/public/css/styles.css">
 </head>
-<body>
+<body class="activity-page">
     <h1>{{ activity.activityName }}</h1>
     <p>Address: {{ activity.activityAddress }}</p>
     <p>Hours: {{ activity.activityHours }}</p>
     <p>Category: {{ activity.activityType }}</p>
-    <p>rating: {{ activity.rating }}</p>
+    <p>Rating: {{ activity.rating }}</p>
     <p>Accommodations: {{ activity.activityAccommodations }}</p>
     <p>Price Range: {{ activity.activityPriceRange }}</p>
     <p>Reviews: {{ activity.reviews }}</p>
@@ -20,8 +20,9 @@
     <p>Description: {{ activity.activityDescription }}</p>    
 
     <!-- Additional details as needed -->
-
+<div class="back-link">
     <p><a href="/allActivities" class="link link-size">Back to Activities List</a></p>
+    </div>
     <script src="/routes/activities.js"></script>
 </body>
 </html>

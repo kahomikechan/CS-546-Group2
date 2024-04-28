@@ -14,7 +14,7 @@
     color: #ffcbcb;
     text-align: center;
     font-family: Garamond, serif;
-    width: 100%;
+    width: 101%;
     padding: 20px 0;
     padding-left: 10px;
     padding-right: 10px;
@@ -97,8 +97,9 @@
 
 
 .link {
-    color: #007bff;
+    color: #132743;
     text-decoration: none;
+    /* margin-top: 30%; */
 }
 
 .link:hover {
@@ -153,14 +154,14 @@
 }
 
 .event{
-    border: 1px solid rgb(175, 210, 192);
+    border: 1px solid #132743;
     padding: 15px;
     box-shadow: #e3e3e3;
-    color:#4CAF50;
+    color:#132743;
 }
 
 .event:hover{
-    background-color: #4CAF50;
+    background-color: #86aab3;
         opacity: 1;
         color: white;
         text-decoration: none;
@@ -204,7 +205,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    background-color: #ffcbcb;
+    background-color: #fbd1d1;
 }
 
 .nav-links li a:hover {
@@ -231,4 +232,126 @@ html, body {
 
 .bottom-links a:hover {
     text-decoration: underline;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8e4e4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #ffcbcb;
+    text-align: center;
+    font-family: Garamond, serif;
+    margin-bottom: 20px;
+    border: 1px solid #132743; /* Border style */
+    padding: 30px; /* Add padding inside the border */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    background-color: #132743;
+    margin: 0
+    /* width: 80%
+    margin: 0 auto; */
+}
+
+p {
+    color: #132743;
+    font-family: Garamond, serif;
+    margin-bottom: 10px;
+}
+
+a {
+    color: #132743;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.activity-page {
+    text-align: center;
+    color: #132743; /* Dark text color */
+    font-family: Garamond, serif; /* Garamond font */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+.activity-page p {
+    margin-bottom: 10px; /* Add space between paragraphs */
+}
+
+.back-link {
+    text-align: center;
+}
+.back-link a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #407088; /* Button background color */
+    color: #fff; /* Button text color */
+    text-decoration: none;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.back-link a:hover {
+    background-color: #132743; /* Darker shade on hover */
+}
+
+.search-form {
+    text-align: center;
+}
+
+.search-label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    transition: all 0.3s ease;
+    width: 200px;
+}
+
+.search-input:focus {
+    border-color: #407088;
+    width: 250px; /* Increase width on focus */
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #407088;;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #132743;; /* Darker shade on hover */
+}
+
+.custom-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #407088; /* Button background color */
+    color: #fff; /* Button text color */
+    text-decoration: none;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    margin-right: 10px; /* Adjust spacing between links */
+    font-family: Garamond, serif; /* Example font family */
+}
+
+.custom-link:hover {
+    background-color: #132743; /* Darker shade on hover */
 }
