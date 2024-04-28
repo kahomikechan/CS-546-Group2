@@ -26,7 +26,7 @@ reviewsRouter.post('/createReview', isAuthenticated, async (req, res) => {
   try {
     const { rating, reviewText, reviewerId, activityId } = req.body;
     const newReview = await createReview(rating, reviewText, reviewerId, activityId);
-    res.render('allReviews', { newReview });
+    res.render('allReviews', { allReviews: newReview });
   } catch (error) {
     res.render('error', { errorMessage: "Unable to submit review." });
   }
@@ -74,7 +74,7 @@ reviewsRouter.delete('/deleteReview/:id', async (req, res) => {
 reviewsRouter.put('/reportReview/:id', isAuthenticated, async (req, res) => {
   try {
     const reviewId = req.params.id;
-    // Update the review document to set reported to true
+ 
     const reviewsCollection = await reviews();
     const result = await reviewsCollection.updateOne(
       { _id: ObjectId(reviewId) },
