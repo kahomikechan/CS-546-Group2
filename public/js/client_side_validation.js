@@ -3,15 +3,15 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // Get the login form
-    const loginForm = document.getElementById('login-form');
+    const loginForm = document.getElementById("login-form");
 
     // Add event listener for form submission
-    loginForm.addEventListener('submit', function(event) {
+    loginForm.addEventListener("submit", function(event) {
         // Prevent the default form submission
         event.preventDefault();
 
         // Validate the email address
-        const emailInput = document.getElementById('emailAddressInput');
+        const emailInput = document.getElementById("emailAddressInput");
         const emailValue = emailInput.value.trim();
         if (!isValidEmail(emailValue)) {
             displayError('Invalid email address');
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Validate the password
-        const passwordInput = document.getElementById('passwordInput');
+        const passwordInput = document.getElementById("passwordInput");
         const passwordValue = passwordInput.value;
         if (!isValidPassword(passwordValue)) {
             displayError('Invalid password');
@@ -34,12 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const registrationForm = document.getElementById('registration-form');
 
     
-    registrationForm.addEventListener('submit', function(event) {
+    registrationForm.addEventListener("submit", function(event) {
         
         event.preventDefault();
 
         
-        const firstNameInput = document.getElementById('firstNameInput');
+        const firstNameInput = document.getElementById("firstNameInput");
         const firstNameValue = firstNameInput.value.trim();
         if (!isValidName(firstNameValue)) {
             displayError('Invalid first name');
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         
-        const lastNameInput = document.getElementById('lastNameInput');
+        const lastNameInput = document.getElementById("lastNameInput");
         const lastNameValue = lastNameInput.value.trim();
         if (!isValidName(lastNameValue)) {
             displayError('Invalid last name');
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
        
-        const userNameInput = document.getElementById('usernameInput');
+        const userNameInput = document.getElementById("usernameInput");
         const userNameValue = userNameInput.value.trim();
         if (!isValidName(userNameValue)) {
             displayError('Invalid user name');
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         
-        const emailInput = document.getElementById('emailAddressInput');
+        const emailInput = document.getElementById("emailAddressInput");
         const emailValue = emailInput.value.trim();
         if (!isValidEmail(emailValue)) {
             displayError('Invalid email address');
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         
-        const passwordInput = document.getElementById('passwordInput');
+        const passwordInput = document.getElementById("passwordInput");
         const passwordValue = passwordInput.value;
         if (!isValidPassword(passwordValue)) {
             displayError('Invalid password');
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         
-        const confirmPasswordInput = document.getElementById('confirmPasswordInput');
+        const confirmPasswordInput = document.getElementById("confirmPasswordInput");
         const confirmPasswordValue = confirmPasswordInput.value;
         
         if (passwordValue !== confirmPasswordValue) {
