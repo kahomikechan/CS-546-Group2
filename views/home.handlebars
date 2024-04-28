@@ -1,27 +1,3 @@
-{{!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protected Page</title>
-      <link rel="stylesheet" href="/public/css/styles.css">
-</head>
-
-<body>
-    <h1>Welcome to Homepage after logging in</h1>
-
-    <div class="events">        
-        <a href="/allEvents" class="link event">Parks for children in Hoboken</a>
-        <a href="/allActivities" class="link event">Activities for children in Hoboken</a>
-    </div>
-
-    <p><a href="/editprofile" class="link">Edit Profile</a></p>
-    <p><a href="/logout" class="link">Logout</a></p>
-</body>
-
-</html> --}}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,24 +13,27 @@
     <link rel="stylesheet" href="/public/css/styles.css">
 </head>
 <body>
-    <div id="activityImage">
+    {{!-- <div id="activityImage">
         <!-- Display specific images -->
-        <img src="/public/images/img7.jpeg" alt="Image 7">
-    </div>
+        <img src="/public/images/img7.jpeg" alt="Image 7" style="width: 100%;">
+    </div> --}}
 
-        {{!-- <form action="/search" method="GET">
-        <input type="text" name="query" placeholder="Search activities...">
-        <button type="submit">Search</button>
-    </form> --}}
-    
-    <ul>
+    <nav>
+    <ul class="nav-links">
         <li><a href="/map">Activities Map</a></li>
         <li><a href="/allActivities">Activities</a></li>
         <li><a href="/allEvents">Events</a></li>
         <li><a href="/allReviews">Reviews</a></li>
         <li><a href="/createEvent">Create Event</a></li>
     </ul>
+    </nav>
+        <div id="activityImage">
+        <!-- Display specific images -->
+        <img src="/public/images/img7.jpeg" alt="Image 7" style="width: 100%;">
+    </div>
+    <div class="bottom-links">
     <p><a href="/editprofile" class="link">Edit Profile</a></p>
     <p><a href="/logout" class="link">Logout</a></p>
+    </div>
 </body>
 </html>
