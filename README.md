@@ -24,7 +24,7 @@ navigate to http://localhost:3000
 
 
 
-#Default Accounts from Seed File:
+Default Accounts from Seed File:
 
 Admin
 
