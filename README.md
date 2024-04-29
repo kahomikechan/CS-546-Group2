@@ -8,5 +8,7 @@ express-handlebars,
 mongodb
 
 install dependencies: npm i
+
 run seed file: node seed.js
+
 start server: npm run start
