@@ -1,4 +1,7 @@
-# CS-546-Group2 Ka Ho Chan, Nese Morali, Anam Qureshi
+# CS-546-Group2 
+
+Ka Ho Chan, Nese Morali, Anam Qureshi
+
 Dependencies: 
 axios,
 bcryptjs, 
