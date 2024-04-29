@@ -118,6 +118,7 @@ const events = [
   },
 ];
 
+/*
 const reviews = [
   {
     rating: 4,
@@ -134,7 +135,7 @@ const reviews = [
     reported: true
   },
 ];
-
+*/
 const uri = 'mongodb://localhost:27017'; 
 
 const dbName = 'CS546_Group2_Final_Project'; 
