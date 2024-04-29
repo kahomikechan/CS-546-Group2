@@ -10,7 +10,9 @@ express-session,
 express-handlebars,
 mongodb
 
-#Setup:
+
+
+Setup:
 
 install dependencies in package.json
 
@@ -19,6 +21,8 @@ run seed file: node seed.js
 start server: npm run start
 
 navigate to http://localhost:3000
+
+
 
 #Default Accounts from Seed File:
 
