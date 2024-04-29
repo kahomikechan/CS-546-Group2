@@ -47,7 +47,7 @@ const activities = [
     activityHours: "24hours",
     activityType: "Park",
     rating: [],
-    activityAccommodations: "Family Bathrooms, Stroller accessible",
+    activityAccommodations: "Family Bathrooms, Stroller Accessible",
     activityPriceRange: "0",
     reviews: [], 
     activityLink: "http://hobokennj.gov/",
